@@ -1,0 +1,1052 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none !important;
+}
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+.whole {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.One_page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+#one_page {
+  width: 100%;
+  height: 100%;
+  transition: opacity 5s ease;
+}
+.One_page_background {
+  width: 100vw;
+  height: 100vh;
+}
+.One_page_background > img {
+  width: 100%;
+  height: 100%;
+}
+.One_page_content {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.One_page_content_title {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.One_page_content_title_page {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.One_page_content_title_left {
+  width: 29px;
+  height: 100%;
+  background-image: url(../images/slicesOne/色相／饱和度\ 1\ 拷贝@2x.png);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: slideLeftLeft 5s linear forwards; /* 修改动画为向前播放一次 */
+}
+
+.One_page_content_title_center {
+  width: 0;
+  height: 80%;
+  background-image: url(../images/slicesOne/图层\ 127@2x.png);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.One_page_content_title_center.open {
+  animation: expandCenter 3.5s ease forwards;
+}
+
+@keyframes expandCenter {
+  0% {
+    width: 0; /* 初始宽度为零 */
+  }
+  100% {
+    width: 528px;
+  }
+}
+.One_page_content_title_center > div {
+  width: 90%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-image: url(../images/slicesOne/牙牙历险记.png);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat; */
+}
+
+.One_page_content_title_center > div > span {
+  font-size: 6rem;
+  font-weight: 500;
+  color: #000;
+  white-space: nowrap;
+}
+.One_page_content_title_right {
+  width: 29px;
+  height: 100%;
+  background-image: url(../images/slicesOne/色相／饱和度\ 1\ 拷贝\ 2@2x.png);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: slideLeftRight 5s linear forwards; /* 修改动画为向前播放一次 */
+}
+
+.One_page_content_text {
+  width: 100%;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 15%;
+}
+.One_page_content_text_content {
+  width: 80%;
+  height: 100%;
+  background-image: url(../images/slicesOne/3.png);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.One_page_content_text_page {
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/slicesOne/4.png);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.One_page_content_text_page > div {
+  width: 80%;
+  height: 50%;
+  background-image: url(../images/slicesOne/拖动牙牙至小船处\ 开始历险.png);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.One_page_content_button {
+  width: 100%;
+  height: 170px;
+  margin-top: 104px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+.One_page_content_button > div {
+  width: 30%;
+  height: 60%;
+  margin-left: 51px;
+  position: absolute;
+  left: 30px;
+  top: 100px;
+  transition: left 1s; /* 添加过渡效果，时长为1秒 */
+}
+.One_page_content_button > div > img {
+  width: 100%;
+  height: 110%;
+}
+@keyframes shrinkAndFadeOut {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%) scale(0);
+    opacity: 0;
+  }
+}
+.draggableElement {
+  width: 100%;
+  height: 82px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  top: 18%;
+}
+#draggableElement {
+  width: 95px;
+  height: 82px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  left: 0;
+}
+#draggableElement > img {
+  width: 95px;
+  height: 100%;
+  margin-left: 20px;
+  transition: left 0.3s linear; /* 添加过渡效果 */
+  z-index: 1;
+  cursor: move;
+  /* 鼠标样式为可移动 */
+  touch-action: none;
+  /* 禁止默认的触摸行为 */
+}
+/* 第二页 */
+.Two_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+.hidden {
+  opacity: 0;
+}
+#two_page {
+  display: none;
+}
+.Two_page_background {
+  width: 100vw;
+  height: 100vh;
+}
+.Two_page_background > img {
+  width: 100%;
+  height: 100%;
+}
+.Two_page_content {
+  width: 100%;
+  height: 80%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.Two_page_content_title {
+  width: 100%;
+  height: 20%;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.Two_page_content_one {
+  width: 100%;
+  height: 372px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.Two_page_content_one_page {
+  width: 25%;
+  height: 100%;
+  margin-right: 20px;
+}
+.Two_page_content_one_page > img {
+  width: 100%;
+  height: 100%;
+}
+.Two_page_content_tip {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.Two_page_content_tip_page {
+  width: 80%;
+  box-sizing: content-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Two_page_content_tip_one {
+  width: 100%;
+  height: 100%;
+}
+#tipOne {
+  display: none;
+}
+.Two_page_content_tip_one > img {
+  width: 100%;
+  height: 100%;
+}
+.Two_page_content_two {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Two_page_content_two_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ice {
+  width: 25%;
+  height: 50%;
+}
+.ice > img {
+  width: 100%;
+  height: 100%;
+}
+.ice-block {
+  position: relative;
+  animation: moveIce linear infinite;
+}
+
+@keyframes moveIce {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 100%;
+  }
+}
+.Two_page_content_three {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Two_page_content_three_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+.ship {
+  width: 30%;
+  height: 100%;
+  position: relative;
+  top: -25px;
+  left: 25px;
+  cursor: move;
+  /* 鼠标样式为可移动 */
+  touch-action: none;
+  /* 禁止默认的触摸行为 */
+}
+.ship > img {
+  width: 100%;
+  height: 100%;
+}
+.ship_tip {
+  width: 30%;
+  height: 100%;
+  position: relative;
+  top: -150px;
+  display: none;
+}
+.ship_tip > img {
+  width: 100%;
+  height: 100%;
+}
+/* 失败页面 */
+#fail {
+  display: none;
+}
+.Fail_page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+.Fail_background {
+  width: 100vw;
+  height: 100vh;
+}
+.Fail_background > img {
+  width: 100%;
+  height: 100%;
+}
+.Fail_content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Fail_content_one {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.Fail_content_one_page {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.Fail_content_one_page > img {
+  width: 100%;
+  height: 100%;
+}
+.Fail_content_two {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.Fail_content_two_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../images/slicesThree/图层\ 109.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.Fail_content_two_page > img {
+  width: 50%;
+  height: 100%;
+}
+.Fail_content_three {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Fail_content_three_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Fail_content_three_page > div {
+  width: 45%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../images/slicesThree/图层\ 111.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.Fail_content_three_page > div > img {
+  width: 50%;
+  height: 50%;
+}
+/* 成功页面 */
+#success {
+  display: none;
+}
+.Success_page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+/* .Success_page_content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+} */
+.Success_background {
+  width: 100vw;
+  height: 100vh;
+}
+.Success_background > img {
+  width: 100%;
+  height: 100%;
+}
+.Success_content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Success_content_one {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.Success_content_one_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.Success_content_one_page_light {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  z-index: 1;
+}
+.Success_content_one_page_light > img {
+  width: 100%;
+  height: 100%;
+}
+@keyframes rotate360 {
+  0% {
+    transform: translateX(-5px) rotate(0deg);
+  }
+  50% {
+    transform: translateX(5px) rotate(10deg);
+  }
+  100% {
+    transform: translateX(-5px) rotate(0deg);
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.Success_content_one_page_light {
+  animation: rotate360 2s linear infinite, blink 1s infinite; /* 旋转动画和闪烁动画同时进行，旋转持续2秒，线性运动无限循环，闪烁持续1秒，无限循环 */
+}
+.Success_content_one_page_prize {
+  width: 70%;
+  height: 80%;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Success_content_one_page_prize > img {
+  height: 100%;
+}
+
+.Yellow {
+  width: 100%;
+  height: 100%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  position: absolute;
+  z-index: 1;
+  display: none;
+}
+.Yellow > img {
+  width: 100%;
+  height: 110%;
+}
+.Success_content_two {
+  width: 100%;
+  height: 99px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Success_content_two_page {
+  width: 80%;
+  height: 100%;
+}
+.Success_content_two_page > img {
+  width: 100%;
+  height: 100%;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(-5px) rotate(0deg);
+  }
+  50% {
+    transform: translateX(5px) rotate(5deg);
+  }
+  100% {
+    transform: translateX(-5px) rotate(0deg);
+  }
+}
+/* 选择地址为"./images/slicesFour/-h-图层 87.png"的图片元素 */
+img[src="./images/slicesFour/-h-图层 87.png"] {
+  animation: none; /* 移除默认动画 */
+}
+
+/* 添加左右摇晃动画 */
+img[src="./images/slicesFour/-h-福袋.png"].shake {
+  animation: shake 0.5s infinite; /* 左右摇晃动画，持续0.5秒，无限循环 */
+}
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.Success_content_two_page {
+  animation: zoom 1s infinite; /* 放大缩小动画，持续1秒，无限循环 */
+}
+
+/* 合成进度 */
+.Synthesis_progress {
+  width: 100%;
+  height: 50px;
+  display: none;
+}
+.Synthesis_progress_page {
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0.5);
+  transition: background-color 3s; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Synthesis_progress_page > img {
+  width: 100%;
+  height: 100%;
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-out-animation {
+  animation: fadeOut 3s forwards; /* 使用动画让背景色逐渐消失，持续3秒 */
+}
+@keyframes moveUp {
+  from {
+    top: 100%; /* 设置起始位置为底部 */
+  }
+  to {
+    top: 20%; /* 设置结束位置为顶部 */
+  }
+}
+#synthesis_progress {
+  position: absolute;
+  top: 100%; /* 设置初始位置为底部 */
+  display: block;
+}
+#synthesis_progresss {
+  position: absolute;
+  top: 100%; /* 设置初始位置为底部 */
+  display: block;
+}
+
+.move-up-animation {
+  animation: moveUp 3s forwards; /* 使用动画让元素向上移动到顶部，持续3秒 */
+}
+.CRAFT {
+  width: 100%;
+  height: 80px;
+  position: absolute;
+  top: 100px;
+  display: none;
+}
+.CRAFT_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.CRAFT_page > img {
+  width: 10%;
+  height: 80%;
+  margin-right: 65px;
+}
+/* 合成牙膏 */
+#Synthetic_toothpaste {
+  display: none;
+}
+.Synthetic_toothpaste_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+.Synthetic_toothpaste_background {
+  width: 100vw;
+  height: 100vh;
+}
+.Synthetic_toothpaste_background > img {
+  width: 100%;
+  height: 100%;
+}
+.Synthetic_toothpaste_content {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+}
+.Synthetic_toothpaste_content_one {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 100px;
+}
+#Synthetic_toothpaste_content_one_page {
+  display: none;
+  width: 90%;
+  height: 100%;
+}
+
+.Synthetic_toothpaste_content_one_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Synthetic_toothpaste_content_one_page > img {
+  width: 100%;
+  height: 100%;
+}
+#Synthetic_toothpaste_content_two {
+  display: none;
+  width: 100%;
+  height: 80%;
+}
+.Synthetic_toothpaste_content_two {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Synthetic_toothpaste_content_two_page {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-image: url(../images/slicesSix/大白框.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.Synthetic_toothpaste_content_two_page > div:nth-child(1) {
+  width: 80%;
+  height: 20%;
+  background-image: url(../images/slicesSix/当遇到火灾时我们应\ 该怎么做.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  margin-top: 45px;
+}
+.Synthetic_toothpaste_content_two_page > div:nth-child(2) {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.Synthetic_toothpaste_content_two_page > div:nth-child(2) > img {
+  width: 80%;
+  height: 20%;
+  margin-top: 25px;
+}
+.Synthetic_toothpaste_content_three {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  bottom: 40px;
+}
+.Synthetic_toothpaste_content_three_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  transition: transform 2s;
+  position: absolute;
+  left: -110px;
+}
+.Synthetic_toothpaste_content_three_page > img {
+  width: 20%;
+  height: 90%;
+}
+.move-left {
+  transform: translateX(15%);
+}
+.Synthetic_toothpaste_content_three_Tips {
+  display: none;
+  width: 15%;
+  height: 90%;
+  transform: scale(0);
+  transition: transform 2s;
+}
+.show {
+  display: block;
+  transform: scale(1);
+}
+.Synthetic_toothpaste_content_three_Tips > img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 火山成功 */
+#Synthetic_toothpaste_success {
+  display: none;
+}
+.Synthetic_toothpaste_success_page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+.Synthetic_toothpaste_success_page_background {
+  width: 100vw;
+  height: 100vh;
+}
+.Synthetic_toothpaste_success_page_background > img {
+  width: 100%;
+  height: 100%;
+}
+.Synthetic_toothpaste_success_page_content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* .Synthetic_toothpaste_success_page_content_one {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+} */
+/* 火山失败 */
+#Synthetic_toothpaste_fail {
+  display: none;
+}
+.Synthetic_toothpaste_fail_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+.Synthetic_toothpaste_fail_page_background {
+  width: 100vw;
+  height: 100vh;
+}
+.Synthetic_toothpaste_fail_page_background > img {
+  width: 100%;
+  height: 100%;
+}
+.Synthetic_toothpaste_fail_page_content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#Synthetic_toothpaste_fail_left {
+  width: 90%;
+  height: 100%;
+}
+#Synthetic_toothpaste_fail_right {
+  width: 90%;
+  height: 100%;
+}
+
+/* 第三页 */
+#Peony_garden {
+  display: none;
+}
+.Peony_garden_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+.Peony_garden_background {
+  width: 100vw;
+  height: 100vh;
+}
+.Peony_garden_background > img {
+  width: 100%;
+  height: 100%;
+}
+.Peony_garden_content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Peony_garden_content_one {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.Peony_garden_content_one_page {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+#Peony_garden_content_one_page {
+  display: none;
+  width: 100%;
+  height: 20%;
+}
+
+.Peony_garden_content_one_page_img {
+  width: 100%;
+  height: 100%;
+}
+.Peony_garden_content_two {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  bottom: 40px;
+}
+.Peony_garden_content_two_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+.Peony_garden_content_two_page_img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  transition: transform 2s;
+  position: absolute;
+  left: -130px;
+}
+.Peony_garden_content_two_page_img > div {
+  width: 20%;
+  height: 100%;
+}
+.Peony_garden_content_two_page_img > img {
+  width: 100%;
+  height: 100%;
+}
+#Peony_garden_content_two_page_tips {
+  display: none;
+}
+.move-right {
+  transform: translateX(45%);
+}

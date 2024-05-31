@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+    content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="shortcut icon" href="https://img.51miz.com/Element/00/78/58/25/a3813777_E785825_9b5f0cd9.png">
+  <link rel="stylesheet" href="./css/index.css">
+  <title>牙牙历险记</title>
+  <style>
+    @font-face {
+      font-family: "Yy";
+      src: url("./font/Yy.ttf");
+    }
+
+    /* @media screen and (min-width: 300px) and (max-width: 400px) {
+      #draggableElement {
+        width: 95px;
+        height: 82px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: absolute;
+        top: 1030px;
+        left: 0;
+      }
+
+      .One_page_content_button>div>img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    @media screen and (min-width: 414px) and (max-width: 800px) {
+      #draggableElement {
+        width: 95px;
+        height: 82px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: absolute;
+        top: 1265px;
+        left: 0;
+      }
+
+      .One_page_content_button>div>img {
+        width: 100%;
+        height: 120%;
+      }
+    } */
+  </style>
+</head>
+
+<body>
+  <div class="whole" id="react-root">
+    <div id="one_page">
+      <div class="One_page">
+        <div class="One_page_background">
+          <img src="./images/slicesOne/2.png" alt="">
+        </div>
+        <div class="One_page_content">
+          <div class="One_page_content_title">
+            <div class="One_page_content_title_page">
+              <div class="One_page_content_title_left">
+                <img src="" alt="">
+              </div>
+              <div class="One_page_content_title_center">
+                <div>
+                  <span>牙牙历险记</span>
+                </div>
+              </div>
+              <div class="One_page_content_title_right">
+                <img src="" alt="">
+              </div>
+
+            </div>
+          </div>
+          <div class="One_page_content_text">
+            <div class="One_page_content_text_content">
+              <div class="One_page_content_text_page">
+                <div></div>
+              </div>
+
+            </div>
+          </div>
+          <div class="draggableElement">
+            <div id="draggableElement">
+              <img id="draggableElementImg" src="./images/slicesOne/好牙巴@2x.png" alt="">
+            </div>
+          </div>
+          <div class="One_page_content_button">
+            <div id="draggableElementMain">
+              <img src="./images/slicesOne/小船.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- 第二页 -->
+    <div id="two_page">
+      <div class="Two_page">
+        <div class="Two_page_background">
+          <img src="./images/slicesTwo/背景.png" alt="">
+        </div>
+        <div class="Two_page_content">
+          <div class="Two_page_content_title" id="Two_page_content_title"></div>
+          <div class="Two_page_content_one">
+            <div class="ice ice-block">
+              <img src="./images/slicesTwo/-h-图层 99.png" alt="">
+            </div>
+            <div class="ice ice-block">
+              <img src="./images/slicesTwo//-h-图层 98.png" alt="">
+            </div>
+            <div class="ice ice-block">
+              <img src="./images/slicesTwo//-h-图层 98.png" alt="">
+            </div>
+          </div>
+          <!-- 提示 -->
+          <div class="Two_page_content_tip" id="Two_page_content_tip">
+            <div class="Two_page_content_tip_page">
+              <div class="Two_page_content_tip_one" id="tipOne">
+                <img src="./images/slicesTwo/点击牙牙更换游泳圈.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="Two_page_content_two">
+            <div class="Two_page_content_two_page">
+              <div class="ice ice-block">
+                <img src="./images/slicesTwo//-h-图层 98.png" alt="">
+              </div>
+              <div class="ice ice-block">
+                <img src="./images/slicesTwo/-h-图层 97.png" alt="">
+              </div>
+              <div class="ice ice-block">
+                <img src="./images/slicesTwo/-h-图层 97.png" alt="">
+              </div>
+              <div class="ice ice-block">
+                <img src="./images/slicesTwo//-h-图层 98.png" alt="">
+              </div>
+              <div class="ice ice-block">
+                <img src="./images/slicesTwo/-h-图层 97.png" alt="">
+              </div>
+              <div class="ice ice-block">
+                <img src="./images/slicesTwo/-h-图层 97.png" alt="">
+              </div>
+
+            </div>
+          </div>
+          <div class="Two_page_content_three">
+            <div class="Two_page_content_three_page">
+              <div class="ship" id="ship">
+                <img src="./images/slicesTwo/船.png" alt="">
+              </div>
+              <div class="ship_tip">
+                <img src="./images//slicesTwo/-h-这里的水好冷_.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 失败页面 -->
+    <div class="Fail" id="fail">
+      <div class="Fail_page">
+        <div class="Fail_background">
+          <img src="./images/slicesThree/图层 112@2x.png" alt="">
+        </div>
+        <div class="Fail_content">
+          <div class="Fail_content_one">
+            <div class="Fail_content_one_page">
+              <img src="./images/slicesThree/yaya.png" alt="">
+            </div>
+          </div>
+          <div class="Fail_content_two">
+            <div class="Fail_content_two_page">
+              <img src="./images/slicesThree/闯关失败.png" alt="">
+            </div>
+          </div>
+          <div class="Fail_content_three">
+            <div class="Fail_content_three_page">
+              <div class="Fail_content_three_page_left" id="fail_left">
+                <img src="./images/slicesThree/再来一次.png" alt="">
+              </div>
+              <div class="Fail_content_three_page_right" id="fail_right">
+                <img src="./images/slicesThree/退出游戏.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- 成功页面 -->
+    <div class="Success" id="success">
+      <div class="Success_page">
+        <div class="Success_background">
+          <img src="./images/slicesFour/背景.png" alt="">
+        </div>
+        <div class="Success_content">
+          <div class="CRAFT" id="craft">
+            <div class="CRAFT_page">
+              <img id="craft_span" src="./images/slicesFive/off.png" alt="">
+            </div>
+          </div>
+          <div class="Synthesis_progress" id="synthesis_progress">
+            <div class="Synthesis_progress_page" id="synthesis_progress_page">
+              <img src="./images/slicesFive/进度提示.png" alt="">
+            </div>
+          </div>
+          <div class="Success_content_one">
+            <div class="Success_content_one_page">
+              <div class="Success_content_one_page_light">
+                <img src="./images/slicesFour/white.png" alt="">
+              </div>
+              <div class="Success_content_one_page_prize">
+                <img class="shake" src="./images/slicesFour/-h-福袋.png" alt="">
+              </div>
+            </div>
+            <div class="Yellow" id="yellow">
+              <img src="./images/slicesThree/yellow.png" alt="">
+            </div>
+          </div>
+          <div class="Success_content_two">
+            <div class="Success_content_two_page">
+              <img src="./images/slicesFour/-h-单击打开福袋.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 火山 -->
+    <div class="Synthetic_toothpaste" id="Synthetic_toothpaste">
+      <div class="Synthetic_toothpaste_page">
+        <div class="Synthetic_toothpaste_background">
+          <img src="./images/slicesSix/背景.png" alt="">
+        </div>
+        <div class="Synthetic_toothpaste_content">
+          <div class="Synthetic_toothpaste_content_one" id="Synthetic_toothpaste_content_one">
+            <div id="Synthetic_toothpaste_content_one_page">
+              <div class="Synthetic_toothpaste_content_one_page" id="Synthetic_toothpaste_content_one_page_img">
+                <img src="./images/slicesSix/-h-前方遇到了山火.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div id="Synthetic_toothpaste_content_two">
+            <div class="Synthetic_toothpaste_content_two">
+              <div class="Synthetic_toothpaste_content_two_page" id="Synthetic_toothpaste_content_two_page">
+                <div></div>
+                <div>
+                  <img src="./images/slicesSix/A..png" alt="" id="Select_A">
+                  <img src="./images/slicesSix/B..png" alt="" id="Select_B">
+                  <img src="./images/slicesSix/C..png" alt="" id="Select_C">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="Synthetic_toothpaste_content_three">
+            <div class="Synthetic_toothpaste_content_three_page" id="Synthetic_toothpaste_content_three_page">
+              <img src="./images/slicesSix/黄牙巴.png" alt="">
+              <div class="Synthetic_toothpaste_content_three_Tips" id="Synthetic_toothpaste_content_three_Tips">
+                <img src="./images/slicesSix/热牙巴（话.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 火山成功 -->
+    <div class="Synthetic_toothpaste_success" id="Synthetic_toothpaste_success">
+      <div class="Synthetic_toothpaste_success_page">
+        <div class="Synthetic_toothpaste_success_page_background">
+          <img src="./images/slicesSeven/框.png" alt="">
+        </div>
+        <div class="Synthetic_toothpaste_success_page_content">
+
+          <div class="CRAFT" id="crafts">
+            <div class="CRAFT_page">
+              <img id="craft_span" class="craft_span" src="./images/slicesSeven/圆角矩形 2 拷贝 2.png" alt="">
+            </div>
+          </div>
+          <div class="Synthesis_progress" id="synthesis_progresss">
+            <div class="Synthesis_progress_page" id="synthesis_progress_pages">
+              <img src="./images/slicesFive/进度提示.png" alt="">
+            </div>
+          </div>
+          <div class="Success_content_one">
+            <div class="Success_content_one_page">
+              <div class="Success_content_one_page_light" id="light">
+                <img src="./images/slicesFour/white.png" alt="">
+              </div>
+              <div class="Success_content_one_page_prize" id="prize">
+                <img class="shake" src="./images/slicesFour/-h-福袋.png" alt="">
+              </div>
+            </div>
+            <div class="Yellow" id="yellows">
+              <img src="./images/slicesSeven/图层 144.png" alt="">
+            </div>
+          </div>
+          <div class="Success_content_two">
+            <div class="Success_content_two_page">
+              <img src="./images/slicesFour/-h-单击打开福袋.png" alt="" id="Synthetic_success_content_img">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 火山失败 -->
+    <div class="Synthetic_toothpaste_fail" id="Synthetic_toothpaste_fail">
+      <div class="Synthetic_toothpaste_fail_page">
+        <div class="Synthetic_toothpaste_fail_page_background">
+          <img src="./images/slicesEight/框.png" alt="">
+        </div>
+        <div class="Synthetic_toothpaste_fail_page_content">
+          <div class="Fail_content_one">
+            <div class="Fail_content_one_page">
+              <img src="./images/slicesEight/牙齿哭哭.png" alt="">
+            </div>
+          </div>
+          <div class="Fail_content_two">
+            <div class="Fail_content_two_page">
+              <img src="./images/slicesEight/闯关失败.png" alt="">
+            </div>
+          </div>
+          <div class="Fail_content_three">
+            <div class="Fail_content_three_page">
+              <div class="Fail_content_three_page_left" id="Synthetic_fail_left">
+                <img id="Synthetic_toothpaste_fail_left" src="./images/slicesEight/再来一次.png" alt="">
+              </div>
+              <div class="Fail_content_three_page_right" id="Synthetic_fail_right">
+                <img id="Synthetic_toothpaste_fail_right" src="./images/slicesEight/退出游戏.png" alt="">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- 第三页 -->
+    <div id="Peony_garden">
+      <div class="Peony_garden_page">
+        <div class="Peony_garden_background">
+          <img src="./images/slicesNine/背景.png" alt="">
+        </div>
+        <div class="Peony_garden_content">
+          <div class="Peony_garden_content_one">
+            <div class="Peony_garden_content_one_page">
+              <div id="Peony_garden_content_one_page">
+                <img class="Peony_garden_content_one_page_img" src="./images/slicesNine/前方经过牡丹园.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="Peony_garden_content_two">
+            <div class="Peony_garden_content_two_page" id="Peony_garden_content_two_page">
+              <div class="Peony_garden_content_two_page_img" id="Peony_garden_content_two_page_img">
+                <div>
+                  <img id="Peony_garden_content_two_page_img_tooth" src="./images/slicesNine/黄牙巴（1）.png" alt="">
+                </div>
+                <div>
+                  <img id="Peony_garden_content_two_page_tips" src="./images/slicesNine/说饿了（2.png" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/script.js"></script>
+  <script src="./js/index.js"></script>
+  <script>
+    setScale();
+    remChange();
+    window.addEventListener('resize', remChange);
+
+    function remChange() {
+      let width = window.screen.width;
+      let fixedw = 750;
+      let scale = width / fixedw; // 获取到的屏幕宽度比上自定义的750宽度获得对应比例
+
+      let meta = document.querySelector("meta[name='viewport']") || document.createElement("meta");
+      meta.setAttribute('name', 'viewport');
+      // 将对应比例填入meta标签即可实现宽度自适应
+      meta.setAttribute('content', `width=device-width, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}, user-scalable=no`);
+
+      // 如果meta标签不存在，则添加到文档中；如果存在，则更新content属性
+      if (!document.querySelector("meta[name='viewport']")) {
+        document.head.appendChild(meta);
+      }
+    } 
+  </script>
+
+</body>
+
+</html>
