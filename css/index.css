@@ -638,12 +638,12 @@ body {
   }
 }
 /* 选择地址为"./images/slicesFour/-h-图层 87.png"的图片元素 */
-img[src="./images/slicesFour/-h-图层 87.png"] {
+img[src="./images/slicesFour/OpenBag.png"] {
   animation: none; /* 移除默认动画 */
 }
 
 /* 添加左右摇晃动画 */
-img[src="./images/slicesFour/-h-福袋.png"].shake {
+img[src="./images/slicesFour/LuckyBag.png"].shake {
   animation: shake 0.5s infinite; /* 左右摇晃动画，持续0.5秒，无限循环 */
 }
 @keyframes zoom {
@@ -816,7 +816,7 @@ img[src="./images/slicesFour/-h-福袋.png"].shake {
 .Synthetic_toothpaste_content_two_page > div:nth-child(1) {
   width: 80%;
   height: 20%;
-  background-image: url(../images/slicesSix/EncounterMountainFire.png.png);
+  background-image: url(../images/slicesSix/EncounterMountainFire.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   margin-top: 45px;
