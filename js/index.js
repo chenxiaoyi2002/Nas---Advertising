@@ -42,7 +42,8 @@ draggableElement.addEventListener("touchend", () => {
   ) {
     // 拖拽到指定位置的处理逻辑
     draggableElement.style.display = "none";
-    draggableElementMain.querySelector("img").src = "./images/slicesTwo/船.png";
+    draggableElementMain.querySelector("img").src =
+      "./images/slicesTwo/ship.png";
     draggableElementMain.style.transition = "left 2s, top 2s";
     draggableElementMain.style.left = "60%";
     setTimeout(() => {
@@ -60,7 +61,7 @@ draggableElement.addEventListener("touchend", () => {
           // 两秒后显示 tipOne
           setTimeout(() => {
             const img = document.querySelector(".ship img");
-            img.src = "./images/slicesTwo/冷牙巴.png";
+            img.src = "./images/slicesTwo/ColdTeeth.png";
             const shipTip = document.querySelector(".ship_tip");
             shipTip.style.display = "block";
             // 三秒后更新图片地址
@@ -102,8 +103,8 @@ let shipY = 0; //获取纵轴
 
 ship.addEventListener("click", function () {
   // 更换图片地址
-  img.src = "./images/slicesTwo/躲.png";
-  ship.src = "./images/slicesTwo/逃.png";
+  img.src = "./images/slicesTwo/hide.png";
+  ship.src = "./images/slicesTwo/escape.png";
   setTimeout(() => {
     Two_page_content_tip.style.display = "none";
     shipTip.style.display = "none";
@@ -212,9 +213,9 @@ const Synthesis_progress_page = document.getElementById(
 );
 Success_content_two_page.addEventListener("click", function () {
   // 更换图片地址
-  light.src = "./images/slicesFour/条状背景光.png";
-  prize.src = "./images/slicesFour/-h-图层 87.png";
-  Success_content_two_page.src = "./images/slicesFour/-h-恭喜获得.png";
+  light.src = "./images/slicesFour/strip.png";
+  prize.src = "./images/slicesFour/87.png";
+  Success_content_two_page.src = "./images/slicesFour/congratulations.png";
   yellow.style.display = "block";
   synthesis_progress.style.display = "block";
 
@@ -259,7 +260,7 @@ craft_span.addEventListener("click", function () {
         Synthetic_toothpaste_content_one_page.style.display = "block";
         setInterval(() => {
           Synthetic_toothpaste_content_one_page_img.src =
-            "./images/slicesSix/请选择正确的选项 通过森林.png";
+            "./images/slicesSix/PleaseSelect.png";
           setTimeout(() => {
             Synthetic_toothpaste_content_one.style.display = "none";
             setTimeout(() => {
@@ -338,9 +339,10 @@ const crafts = document.getElementById("crafts");
 
 Synthetic_success_content_img.addEventListener("click", function () {
   // 更换图片地址
-  lights.src = "./images/slicesSeven/图层 145.png";
-  prizes.src = "./images/slicesSeven/PN-SC抗敏因子.png";
-  Synthetic_success_content_img.src = "./images/slicesSeven/恭喜获得.png";
+  lights.src = "./images/slicesSeven/145.png";
+  prizes.src = "./images/slicesSeven/PN-SC.png";
+  Synthetic_success_content_img.src =
+    "./images/slicesSeven/congratulations.png";
   yellows.style.display = "block";
   synthesis_progresss.style.display = "block";
 
@@ -369,6 +371,7 @@ const Peony_garden_content_one_page = document.getElementById(
 const Peony_garden_content_one_page_img = document.querySelector(
   ".Peony_garden_content_one_page_img"
 );
+const Peony_cake = document.getElementById("Peony_cake");
 craft_spans.addEventListener("click", function () {
   Synthetic_toothpaste_success.style.display = "none";
   Peony_garden.style.display = "block";
@@ -383,11 +386,14 @@ craft_spans.addEventListener("click", function () {
             "./images/slicesNine/拖动牙牙食用牡丹花饼.png";
           setTimeout(() => {
             Peony_garden_content_one_page_img.src =
-              "./images/slicesNine/切记不可过多食用哟.png";
+              "./images/slicesNine/Don'teat.png";
             setTimeout(() => {
               Peony_garden_content_one_page_img.src =
                 "./images/slicesNine/如有牡丹花掉落拾取 会有意想不到的收获哦.png";
-              setTimeout(() => {}, 2000);
+              setTimeout(() => {
+                Peony_garden_content_one_page.style.display = "none";
+                Peony_cake.style.display = "block";
+              }, 2000);
             }, 1500);
           }, 1500);
         }, 1500);

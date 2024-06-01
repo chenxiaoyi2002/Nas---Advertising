@@ -65,7 +65,7 @@ body {
 .One_page_content_title_left {
   width: 29px;
   height: 100%;
-  background-image: url(../images/slicesOne/色相／饱和度\ 1\ 拷贝@2x.png);
+  background-image: url(../images/slicesOne/Rollerleverleft.png);
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -75,7 +75,7 @@ body {
 .One_page_content_title_center {
   width: 0;
   height: 80%;
-  background-image: url(../images/slicesOne/图层\ 127@2x.png);
+  background-image: url(../images/slicesOne/Intermediatelayer.png);
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -118,7 +118,7 @@ body {
 .One_page_content_title_right {
   width: 29px;
   height: 100%;
-  background-image: url(../images/slicesOne/色相／饱和度\ 1\ 拷贝\ 2@2x.png);
+  background-image: url(../images/slicesOne/Rollerleverright.png);
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -159,7 +159,7 @@ body {
 .One_page_content_text_page > div {
   width: 80%;
   height: 50%;
-  background-image: url(../images/slicesOne/拖动牙牙至小船处\ 开始历险.png);
+  background-image: url(../images/slicesOne/TheAdventuresFang.png);
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -453,7 +453,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(../images/slicesThree/图层\ 109.png);
+  background-image: url(../images/slicesThree/109.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -482,7 +482,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(../images/slicesThree/图层\ 111.png);
+  background-image: url(../images/slicesThree/111.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -809,14 +809,14 @@ img[src="./images/slicesFour/-h-福袋.png"].shake {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-image: url(../images/slicesSix/大白框.png);
+  background-image: url(../images/slicesSix/Big.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 .Synthetic_toothpaste_content_two_page > div:nth-child(1) {
   width: 80%;
   height: 20%;
-  background-image: url(../images/slicesSix/当遇到火灾时我们应\ 该怎么做.png);
+  background-image: url(../images/slicesSix/EncounterMountainFire.png.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   margin-top: 45px;
@@ -851,19 +851,19 @@ img[src="./images/slicesFour/-h-福袋.png"].shake {
   align-items: center;
   transition: transform 2s;
   position: absolute;
-  left: -110px;
+  left: -145px;
 }
 .Synthetic_toothpaste_content_three_page > img {
   width: 20%;
-  height: 90%;
+  height: 80%;
 }
 .move-left {
-  transform: translateX(15%);
+  transform: translateX(25%);
 }
 .Synthetic_toothpaste_content_three_Tips {
   display: none;
   width: 15%;
-  height: 90%;
+  height: 80%;
   transform: scale(0);
   transition: transform 2s;
 }
@@ -1003,7 +1003,68 @@ img[src="./images/slicesFour/-h-福袋.png"].shake {
   width: 100%;
   height: 20%;
 }
-
+#Peony_cake {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+.Peony_cake_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+.Peony_cake_page > div > img {
+  width: 100%;
+  height: 100%;
+}
+.Peony_cake_page_img_one {
+  width: 20%;
+  height: 5%;
+  position: absolute;
+  top: -20%;
+  animation: dropDown 7s 8s forwards;
+}
+.Peony_cake_page_img_two {
+  width: 40%;
+  height: 15%;
+  position: absolute;
+  top: -30%;
+  left: 60%;
+  animation: dropDown 6s 7s forwards;
+}
+.Peony_cake_page_img_three {
+  width: 30%;
+  height: 10%;
+  position: absolute;
+  top: -23%;
+  left: 5%;
+  animation: dropDown 5s 6s forwards;
+}
+.Peony_cake_page_img_four {
+  width: 40%;
+  height: 15%;
+  position: absolute;
+  top: -28%;
+  left: 70%;
+  animation: dropDown 5s forwards;
+}
+@keyframes dropDown {
+  0% {
+    transform: translateY(0);
+    opacity: 0.5; /* 初始透明度为1 */
+  }
+  50% {
+    opacity: 0.7; /* 在动画的中间位置透明度变为0 */
+  }
+  100% {
+    transform: translateY(1200px);
+    opacity: 1; /* 最终透明度为1 */
+  }
+}
 .Peony_garden_content_one_page_img {
   width: 100%;
   height: 100%;
@@ -1015,7 +1076,7 @@ img[src="./images/slicesFour/-h-福袋.png"].shake {
   justify-content: flex-start;
   align-items: center;
   position: absolute;
-  bottom: 40px;
+  bottom: 20%;
 }
 .Peony_garden_content_two_page {
   width: 100%;
@@ -1032,21 +1093,42 @@ img[src="./images/slicesFour/-h-福袋.png"].shake {
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  transition: transform 2s;
+  transition: transform 2s ease-in-out;
   position: absolute;
-  left: -130px;
+  /* left: -210px; */
 }
 .Peony_garden_content_two_page_img > div {
   width: 20%;
   height: 100%;
 }
-.Peony_garden_content_two_page_img > img {
-  width: 100%;
+.Peony_garden_content_two_page_img > div:nth-child(2) {
+  width: 30%;
   height: 100%;
+}
+.Peony_garden_content_two_page_img > div > img {
+  width: 100%;
+  height: 65%;
 }
 #Peony_garden_content_two_page_tips {
   display: none;
 }
 .move-right {
-  transform: translateX(45%);
+  animation: moveRight 2s forwards, moveDown 2s 2s forwards;
+}
+@keyframes moveRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(20%);
+  }
+}
+
+@keyframes moveDown {
+  0% {
+    transform: translate(20%, 0);
+  }
+  100% {
+    transform: translate(20%, 85%);
+  }
 }
