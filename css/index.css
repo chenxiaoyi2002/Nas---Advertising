@@ -262,12 +262,40 @@ body {
 .Two_page_content_title {
   width: 100%;
   height: 20%;
-  background-color: rgba(255, 255, 255, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  top: -9%;
 }
+.Two_page_content_title > div {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../images/slicesFour/strip.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  animation: rotate360 2s linear infinite, blink 1s infinite; /* 旋转动画和闪烁动画同时进行，旋转持续2秒，线性运动无限循环，闪烁持续1秒，无限循环 */
+}
+.Two_page_content_title > div > img {
+  width: 60%;
+  height: 70%;
+}
+@keyframes rotate360 {
+  0% {
+    transform: translateX(-5px) rotate(0deg);
+  }
+  50% {
+    transform: translateX(5px) rotate(10deg);
+  }
+  100% {
+    transform: translateX(-5px) rotate(0deg);
+  }
+}
+
 .Two_page_content_one {
   width: 100%;
   height: 372px;
@@ -370,8 +398,7 @@ body {
   left: 25px;
   cursor: move;
   /* 鼠标样式为可移动 */
-  touch-action: none;
-  /* 禁止默认的触摸行为 */
+  /* transition: left 2s, top 2s; */
 }
 .ship > img {
   width: 100%;
@@ -426,7 +453,7 @@ body {
   position: relative;
 }
 .Fail_content_one_page {
-  width: 50%;
+  width: 45%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -657,7 +684,9 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
     transform: scale(1);
   }
 }
-
+#shake {
+  height: 80%;
+}
 .Success_content_two_page {
   animation: zoom 1s infinite; /* 放大缩小动画，持续1秒，无限循环 */
 }
@@ -707,6 +736,11 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
   display: block;
 }
 #synthesis_progresss {
+  position: absolute;
+  top: 100%; /* 设置初始位置为底部 */
+  display: block;
+}
+#Peony_garden_success_progresss {
   position: absolute;
   top: 100%; /* 设置初始位置为底部 */
   display: block;
@@ -979,7 +1013,7 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 .Peony_garden_content_one {
@@ -1012,10 +1046,11 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
   position: relative;
+  top: -20%;
 }
 .Peony_cake_page > div > img {
   width: 100%;
@@ -1024,47 +1059,37 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
 .Peony_cake_page_img_one {
   width: 20%;
   height: 5%;
-  position: absolute;
-  top: -20%;
-  animation: dropDown 7s 8s forwards;
+  animation: moveCake linear infinite;
+  animation: moveCake linear infinite;
 }
 .Peony_cake_page_img_two {
   width: 40%;
   height: 15%;
-  position: absolute;
-  top: -30%;
-  left: 60%;
-  animation: dropDown 6s 7s forwards;
+  animation: moveCake linear infinite;
 }
 .Peony_cake_page_img_three {
   width: 30%;
   height: 10%;
-  position: absolute;
-  top: -23%;
-  left: 5%;
-  animation: dropDown 5s 6s forwards;
+  animation: moveCake linear infinite;
 }
 .Peony_cake_page_img_four {
   width: 40%;
   height: 15%;
-  position: absolute;
-  top: -28%;
-  left: 70%;
-  animation: dropDown 5s forwards;
+  animation: moveCake linear infinite;
 }
-@keyframes dropDown {
+.Cake-block {
+  position: relative;
+}
+
+@keyframes moveCake {
   0% {
-    transform: translateY(0);
-    opacity: 0.5; /* 初始透明度为1 */
-  }
-  50% {
-    opacity: 0.7; /* 在动画的中间位置透明度变为0 */
+    top: 0;
   }
   100% {
-    transform: translateY(1200px);
-    opacity: 1; /* 最终透明度为1 */
+    top: 100%;
   }
 }
+
 .Peony_garden_content_one_page_img {
   width: 100%;
   height: 100%;
@@ -1097,17 +1122,23 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
   position: absolute;
   /* left: -210px; */
 }
-.Peony_garden_content_two_page_img > div {
+.Peony_garden_content_two_page_img > div:nth-child(1) {
   width: 20%;
   height: 100%;
+  position: relative;
 }
 .Peony_garden_content_two_page_img > div:nth-child(2) {
   width: 30%;
   height: 100%;
+  position: relative;
 }
 .Peony_garden_content_two_page_img > div > img {
   width: 100%;
   height: 65%;
+}
+.Peony_garden_content_two_page_img > div:nth-child(2) > img {
+  width: 90%;
+  height: 50%;
 }
 #Peony_garden_content_two_page_tips {
   display: none;
@@ -1131,4 +1162,106 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
   100% {
     transform: translate(20%, 85%);
   }
+}
+.Peony_garden_content_two_page_img_tooth {
+  left: 0; /* 初始位置左边距为0 */
+  top: 0; /* 初始位置上边距为0 */
+  /* transition: left 2s, top 2s; */
+  cursor: move; /* 鼠标样式为移动图标 */
+}
+
+.move {
+  left: 100px; /* 移动到左边距100px处 */
+  top: 100px; /* 移动到上边距100px处 */
+}
+
+/* 牡丹花成功 */
+#Peony_garden_success {
+  display: none;
+}
+
+.Peony_garden_success_page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+.Peony_garden_success_page_background {
+  width: 100vw;
+  height: 100vh;
+}
+.Peony_garden_success_page_background > img {
+  width: 100%;
+  height: 100%;
+}
+.Peony_garden_success_content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* 牡丹花失败 */
+#Peony_garden_fail {
+  display: none;
+}
+.Peony_garden_fail_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+.Peony_garden_fail_page_background {
+  width: 100vw;
+  height: 100vh;
+}
+.Peony_garden_fail_page_background > img {
+  width: 100%;
+  height: 100%;
+}
+.Peony_garden_fail_content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* <!-- 牙膏合成 --> */
+#Toothpaste_Synthesis {
+  display: none;
+}
+.Toothpaste_Synthesis_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+.Toothpaste_Synthesis_page_background {
+  width: 100vw;
+  height: 100vh;
+}
+.Toothpaste_Synthesis_page_background > img {
+  width: 100%;
+  height: 100%;
+}
+.Toothpaste_Synthesis_content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

@@ -81,7 +81,7 @@ draggableElement.addEventListener("touchend", () => {
 });
 
 // 第二页显示
-const onePage = document.getElementById("one_page");
+var onePage = document.getElementById("one_page");
 const twoPage = document.getElementById("two_page");
 const tipOne = document.getElementById("tipOne");
 // 图片替换
@@ -109,6 +109,9 @@ ship.addEventListener("click", function () {
     Two_page_content_tip.style.display = "none";
     shipTip.style.display = "none";
     setTimeout(() => {
+      // 增加canMove 防止撞冰后鼠标移动事件继续触发
+      let canMove = true;
+
       // 添加触摸事件监听器
       ships.addEventListener("touchstart", function (event) {
         // 记录触摸开始时的初始位置
@@ -119,6 +122,10 @@ ship.addEventListener("click", function () {
       ships.addEventListener("touchmove", function (event) {
         // 阻止默认滚动行为
         event.preventDefault();
+        if (!canMove) {
+          return;
+        }
+        checkCollision();
 
         // 计算船应该移动到的位置
         const x = event.touches[0].clientX - shipX;
@@ -129,37 +136,6 @@ ship.addEventListener("click", function () {
         ships.style.top = y + "px";
       });
 
-      ships.addEventListener("touchend", function () {
-        // 检查船是否达到 Two_page_content_title 元素位置
-        const shipRect = ships.getBoundingClientRect();
-        const titlePosition = document
-          .querySelector("#Two_page_content_title")
-          .getBoundingClientRect();
-        const touchingIce = checkCollision(); // 检查是否碰到冰块
-
-        if (
-          shipRect.left < titlePosition.right &&
-          shipRect.right > titlePosition.left &&
-          shipRect.top < titlePosition.bottom &&
-          shipRect.bottom > titlePosition.top
-        ) {
-          // 船移动到指定位置，显示成功消息
-          successMessage.style.display = "block";
-          failMessage.style.display = "none";
-          twoPage.style.display = "none";
-        } else if (!touchingIce) {
-          // 船既没有到达指定位置，也没有碰到冰块，返回原位置
-          ships.style.left = "0px";
-          ships.style.top = "0px";
-          successMessage.style.display = "none";
-          failMessage.style.display = "none";
-        } else {
-          // 船碰到冰块，显示失败消息
-          failMessage.style.display = "block";
-          successMessage.style.display = "none";
-          twoPage.style.display = "none";
-        }
-      });
       // 隐藏成功和失败提示元素初始状态
       successMessage.style.display = "none";
       failMessage.style.display = "none";
@@ -183,6 +159,47 @@ ship.addEventListener("click", function () {
 
         return false; // 未发生碰撞
       }
+
+      function animate() {
+        // 检查碰撞并显示失败消息
+        if (checkCollision()) {
+          failMessage.style.display = "block";
+          successMessage.style.display = "none";
+          twoPage.style.display = "none";
+        }
+
+        // 继续循环
+        requestAnimationFrame(animate);
+      }
+
+      // 开始动画循环
+      animate();
+
+      ships.addEventListener("touchend", function () {
+        // 检查船是否达到 Two_page_content_title 元素位置
+        const shipRect = ships.getBoundingClientRect();
+        const titlePosition = document
+          .querySelector("#Two_page_content_title")
+          .getBoundingClientRect();
+        const touchingIce = checkCollision(); // 检查是否碰到冰块
+
+        if (
+          shipRect.left < titlePosition.right &&
+          shipRect.right > titlePosition.left &&
+          shipRect.top < titlePosition.bottom &&
+          shipRect.bottom > titlePosition.top
+        ) {
+          // 船移动到指定位置，显示成功消息
+          successMessage.style.display = "block";
+          failMessage.style.display = "none";
+          twoPage.style.display = "none";
+        } else if (touchingIce) {
+          // 船碰到冰块，显示失败消息
+          failMessage.style.display = "block";
+          successMessage.style.display = "none";
+          twoPage.style.display = "none";
+        }
+      });
     }, 1000);
   }, 1000);
 });
@@ -296,7 +313,7 @@ const Synthetic_toothpaste_content_one_page_img = document.querySelector(
 const Select_A = document.getElementById("Select_A");
 const Select_B = document.getElementById("Select_B");
 const Select_C = document.getElementById("Select_C");
-// 火车成功
+// 火山成功
 const Synthetic_toothpaste_success = document.getElementById(
   "Synthetic_toothpaste_success"
 );
@@ -311,7 +328,8 @@ Synthetic_fail_left.addEventListener("click", function () {
   Synthetic_toothpaste.style.display = "block";
 });
 Synthetic_fail_right.addEventListener("click", function () {
-  window.close();
+  Synthetic_toothpaste_success.style.display = "none";
+  onePage.style.display = "block";
 });
 Select_A.addEventListener("click", () => {
   Synthetic_toothpaste.style.display = "none";
@@ -372,6 +390,7 @@ const Peony_garden_content_one_page_img = document.querySelector(
   ".Peony_garden_content_one_page_img"
 );
 const Peony_cake = document.getElementById("Peony_cake");
+const Peony_tips = document.getElementById("Peony_tips");
 craft_spans.addEventListener("click", function () {
   Synthetic_toothpaste_success.style.display = "none";
   Peony_garden.style.display = "block";
@@ -383,21 +402,169 @@ craft_spans.addEventListener("click", function () {
         Peony_garden_content_one_page.style.display = "block";
         setTimeout(() => {
           Peony_garden_content_one_page_img.src =
-            "./images/slicesNine/拖动牙牙食用牡丹花饼.png";
+            "./images/slicesNine/EatFlowers.png";
           setTimeout(() => {
             Peony_garden_content_one_page_img.src =
               "./images/slicesNine/Don'teat.png";
             setTimeout(() => {
               Peony_garden_content_one_page_img.src =
-                "./images/slicesNine/如有牡丹花掉落拾取 会有意想不到的收获哦.png";
+                "./images/slicesNine/ReceivingFlowers.png";
               setTimeout(() => {
                 Peony_garden_content_one_page.style.display = "none";
                 Peony_cake.style.display = "block";
-              }, 2000);
-            }, 1500);
-          }, 1500);
-        }, 1500);
-      }, 1000);
-    }, 1000);
+                setTimeout(() => {
+                  Peony_tips.style.display = "none";
+                  setTimeout(() => {
+                    cakes.forEach((cake) => {
+                      const duration = Math.random() * 10 + 5; // 随机持续时间（5到15秒）
+                      const delay = Math.random() * 5; // 随机延迟时间（0到5秒）
+
+                      cake.style.animationDuration = `${duration}s`;
+                      cake.style.animationDelay = `${delay}s`;
+                      cake.style.animationDirection = "normal"; // 设置动画方向为从上往下
+                      setTimeout(() => {
+                        tooth.addEventListener("touchstart", function (event) {
+                          // 记录触摸开始时的初始位置
+                          toothX = event.touches[0].clientX - tooth.offsetLeft;
+                          toothY = event.touches[0].clientY - tooth.offsetTop;
+                        });
+
+                        tooth.addEventListener("touchmove", function (event) {
+                          // 阻止默认滚动行为
+                          event.preventDefault();
+
+                          // 计算船应该移动到的位置
+                          const x = event.touches[0].clientX - toothX;
+                          const y = event.touches[0].clientY - toothY;
+
+                          // 更新船的位置
+                          tooth.style.left = x + "px";
+                          tooth.style.top = y + "px";
+
+                          // 获取具有特定类名的元素数量
+                          function getNumberOfElementsWithClass(className) {
+                            return document.getElementsByClassName(
+                              className
+                            ).length;
+                          }
+
+                          // 调用函数获取Cake-block的数量
+                          const numberOfCakeBlocks =
+                            getNumberOfElementsWithClass("cake-block");
+                          console.log(
+                            "Cake-block的数量为：" + numberOfCakeBlocks
+                          );
+                          if (numberOfCakeBlocks <= 0) {
+                            // 成功吃掉三个蛋糕
+                            Peony_garden.style.display = "none";
+                            Peony_garden_fail.style.display = "block";
+                            // 重置
+
+                            return; // 结束事件处理程序
+                          } else if (isColliding(tooth, specificCake)) {
+                            Peony_garden.style.display = "none";
+                            Peony_garden_success.style.display = "block";
+                            return;
+                          }
+
+                          // 检查是否与蛋糕碰撞
+                          cakes.forEach((cake) => {
+                            if (isColliding(tooth, cake)) {
+                              // 如果碰撞，则吃掉蛋糕
+                              cake.remove();
+                            }
+                          });
+
+                          // 检测两个元素是否碰撞
+                          function isColliding(element1, element2) {
+                            const rect1 = element1.getBoundingClientRect();
+                            const rect2 = element2.getBoundingClientRect();
+                            return !(
+                              rect1.right < rect2.left ||
+                              rect1.left > rect2.right ||
+                              rect1.bottom < rect2.top ||
+                              rect1.top > rect2.bottom
+                            );
+                          }
+                        });
+                      }, 1000);
+                    });
+                  }, 1000);
+                }, 1000);
+              }, 1000);
+            }, 3000);
+          }, 3000);
+        }, 3000);
+      }, 3000);
+    }, 3000);
   }, 1000);
+});
+
+// 移动牙牙
+const cakes = document.querySelectorAll(
+  ".Peony_cake_page_img_one, .Peony_cake_page_img_two, .Peony_cake_page_img_three, .Peony_cake_page_img_four"
+);
+
+const tooth = document.getElementById("tooth");
+const specificCake = document.getElementById("Peony_cake_page_img_two");
+let toothX = 0; // 获取横轴
+let toothY = 0; // 获取纵轴
+
+//牡丹花成功
+const Peony_garden_success = document.getElementById("Peony_garden_success");
+// 牡丹花失败
+const Peony_garden_fail = document.getElementById("Peony_garden_fail");
+const Synthetic_toothpaste_fail_left = document.getElementById(
+  "Synthetic_fail_lefts"
+);
+Synthetic_toothpaste_fail_left.addEventListener("click", function () {
+  Peony_garden_fail.style.display = "none";
+  Peony_garden.style.display = "block";
+  toothX.style.left = "0px";
+  toothY.style.top = "0px";
+});
+const Synthetic_toothpaste_fail_right = document.getElementById(
+  "Synthetic_fail_rights"
+);
+Synthetic_toothpaste_fail_right.addEventListener("click", function () {
+  Peony_garden_fail.style.display = "none";
+  onePage.style.display = "block";
+  onePage.style.opacity = 1;
+});
+
+// 选择
+const Lights = document.querySelector("#lights img");
+const Prizes = document.querySelector("#prizes  img");
+const Crafts = document.getElementById("Crafts");
+const Peony_garden_success_img = document.getElementById(
+  "Peony_garden_success_img"
+);
+const Peony_garden_success_progresss = document.getElementById(
+  "Peony_garden_success_progresss"
+);
+const Peony_garden_progress_pages = document.getElementById(
+  "Peony_garden_progress_pages"
+);
+const yellows_three = document.getElementById("yellowss");
+Peony_garden_success_img.addEventListener("click", function () {
+  // 更换图片地址
+  Lights.src = "./images/slicesTen/157.png";
+  Prizes.src = "./images/slicesTen/Withdraw.png";
+  Peony_garden_success_img.src = "./images/slicesTen/congratulations.png";
+  yellows_three.style.display = "block";
+  Peony_garden_success_progresss.style.display = "block";
+
+  Peony_garden_success_progresss.classList.add("move-up-animation"); // 添加移动到顶部的动画类
+  setTimeout(() => {
+    Peony_garden_progress_pages.classList.add("fade-out-animation");
+    // 添加背景色逐渐消失的动画类
+    Crafts.style.display = "block";
+  }, 3500);
+});
+
+// 关闭打开合成牙膏
+const Toothpaste_Synthesis = document.createElement("Toothpaste_Synthesis");
+Crafts.addEventListener("click", () => {
+  Toothpaste_Synthesis.style.display = "block";
+  Peony_garden_success.style.display = "none";
 });
