@@ -1,6 +1,6 @@
 document.querySelector(".One_page_content_title_center").classList.add("open");
-const draggableElement = document.getElementById("draggableElement");
-const draggableElementMain = document.getElementById("draggableElementMain");
+var draggableElement = document.getElementById("draggableElement");
+var draggableElementMain = document.getElementById("draggableElementMain");
 let originalPosition = { x: 0, y: 0 };
 let offsetX, offsetY;
 let isDragging = false;
@@ -42,6 +42,9 @@ draggableElement.addEventListener("touchend", () => {
   ) {
     // 拖拽到指定位置的处理逻辑
     draggableElement.style.display = "none";
+    draggableElementMain.style.width = "25%";
+    draggableElementMain.style.height = "45%";
+
     draggableElementMain.querySelector("img").src =
       "./images/slicesTwo/ship.png";
     draggableElementMain.style.transition = "left 2s, top 2s";
@@ -203,6 +206,13 @@ ship.addEventListener("click", function () {
     }, 1000);
   }, 1000);
 });
+// 修改，牙在冰的上下左右100px内才算碰上，可修改betweenNum
+
+function betweenNum(num, num1 = -100, num2 = 100) {
+  if (num1 < num2) {
+    return num > num1 && num < num2;
+  } else return num < num1 && num > num2;
+}
 
 // 获取所有的冰块元素
 const iceBlocks = document.querySelectorAll(".ice-block");
@@ -240,7 +250,33 @@ Success_content_two_page.addEventListener("click", function () {
   setTimeout(() => {
     Synthesis_progress_page.classList.add("fade-out-animation");
     // 添加背景色逐渐消失的动画类
-    craft.style.display = "block";
+    // craft.style.display = "block";
+    // 修改
+    setTimeout(() => {
+      successMessage.style.display = "none";
+      Synthetic_toothpaste.style.display = "block";
+      setTimeout(() => {
+        // 触发向左移动
+        element.classList.add("move-left");
+
+        setTimeout(() => {
+          Synthetic_toothpaste_content_three_Tips.classList.add("show");
+          setTimeout(() => {
+            Synthetic_toothpaste_content_one_page.style.display = "block";
+            setInterval(() => {
+              Synthetic_toothpaste_content_one_page_img.src =
+                "./images/slicesSix/PleaseSelect.png";
+              setTimeout(() => {
+                Synthetic_toothpaste_content_one.style.display = "none";
+                setTimeout(() => {
+                  Synthetic_toothpaste_content_two.style.display = "block";
+                }, 1000);
+              }, 1000);
+            }, 2000);
+          }, 2000);
+        }, 2000);
+      }, 1000);
+    }, 2000);
   }, 3500);
 });
 // 失败
@@ -257,7 +293,7 @@ fail_left.addEventListener("click", function () {
 });
 // 退出游戏
 fail_right.addEventListener("click", function () {
-  window.close();
+  location.reload();
 });
 
 // 合成进度
@@ -328,8 +364,7 @@ Synthetic_fail_left.addEventListener("click", function () {
   Synthetic_toothpaste.style.display = "block";
 });
 Synthetic_fail_right.addEventListener("click", function () {
-  Synthetic_toothpaste_success.style.display = "none";
-  onePage.style.display = "block";
+  location.reload();
 });
 Select_A.addEventListener("click", () => {
   Synthetic_toothpaste.style.display = "none";
@@ -368,7 +403,127 @@ Synthetic_success_content_img.addEventListener("click", function () {
   setTimeout(() => {
     Synthesis_progress_pages.classList.add("fade-out-animation");
     // 添加背景色逐渐消失的动画类
-    crafts.style.display = "block";
+    // crafts.style.display = "block";
+    setTimeout(() => {
+      Synthetic_toothpaste_success.style.display = "none";
+      Peony_garden.style.display = "block";
+      setTimeout(() => {
+        Peony_garden_content_two_page_img.classList.add("move-right");
+        setTimeout(() => {
+          Peony_garden_content_two_page_tips.style.display = "block";
+          setTimeout(() => {
+            Peony_garden_content_one_page.style.display = "block";
+            setTimeout(() => {
+              Peony_garden_content_one_page_img.src =
+                "./images/slicesNine/EatFlowers.png";
+              setTimeout(() => {
+                Peony_garden_content_one_page_img.src =
+                  "./images/slicesNine/Don'teat.png";
+                setTimeout(() => {
+                  Peony_garden_content_one_page_img.src =
+                    "./images/slicesNine/ReceivingFlowers.png";
+                  setTimeout(() => {
+                    Peony_garden_content_one_page.style.display = "none";
+                    Peony_cake.style.display = "block";
+                    setTimeout(() => {
+                      Peony_tips.style.display = "none";
+                      setTimeout(() => {
+                        cakes.forEach((cake) => {
+                          const duration = Math.random() * 10 + 5; // 随机持续时间（5到15秒）
+                          const delay = Math.random() * 5; // 随机延迟时间（0到5秒）
+
+                          cake.style.animationDuration = `${duration}s`;
+                          cake.style.animationDelay = `${delay}s`;
+                          cake.style.animationDirection = "normal"; // 设置动画方向为从上往下
+                          setTimeout(() => {
+                            tooth.addEventListener(
+                              "touchstart",
+                              function (event) {
+                                // 记录触摸开始时的初始位置
+                                toothX =
+                                  event.touches[0].clientX - tooth.offsetLeft;
+                                toothY =
+                                  event.touches[0].clientY - tooth.offsetTop;
+                              }
+                            );
+
+                            tooth.addEventListener(
+                              "touchmove",
+                              function (event) {
+                                // 阻止默认滚动行为
+                                event.preventDefault();
+
+                                // 计算船应该移动到的位置
+                                const x = event.touches[0].clientX - toothX;
+                                const y = event.touches[0].clientY - toothY;
+
+                                // 更新船的位置
+                                tooth.style.left = x + "px";
+                                tooth.style.top = y + "px";
+
+                                // 获取具有特定类名的元素数量
+                                function getNumberOfElementsWithClass(
+                                  className
+                                ) {
+                                  return document.getElementsByClassName(
+                                    className
+                                  ).length;
+                                }
+
+                                // 调用函数获取Cake-block的数量
+                                const numberOfCakeBlocks =
+                                  getNumberOfElementsWithClass("cake-block");
+                                console.log(
+                                  "Cake-block的数量为：" + numberOfCakeBlocks
+                                );
+                                if (numberOfCakeBlocks <= 0) {
+                                  // 成功吃掉三个蛋糕
+                                  Peony_garden.style.display = "none";
+                                  Peony_garden_fail.style.display = "block";
+                                  // 重置
+
+                                  return; // 结束事件处理程序
+                                } else if (isColliding(tooth, specificCake)) {
+                                  Peony_garden.style.display = "none";
+                                  Peony_garden_success.style.display = "block";
+                                  return;
+                                }
+
+                                // 检查是否与蛋糕碰撞
+                                cakes.forEach((cake) => {
+                                  if (isColliding(tooth, cake)) {
+                                    // 如果碰撞，则吃掉蛋糕
+                                    cake.remove();
+                                  }
+                                });
+
+                                // 检测两个元素是否碰撞
+                                function isColliding(element1, element2) {
+                                  const rect1 =
+                                    element1.getBoundingClientRect();
+                                  const rect2 =
+                                    element2.getBoundingClientRect();
+                                  return !(
+                                    rect1.right < rect2.left ||
+                                    rect1.left > rect2.right ||
+                                    rect1.bottom < rect2.top ||
+                                    rect1.top > rect2.bottom
+                                  );
+                                }
+                              }
+                            );
+                          }, 1000);
+                        });
+                      }, 1000);
+                    }, 1000);
+                  }, 1000);
+                }, 3000);
+              }, 3000);
+            }, 3000);
+          }, 3000);
+        }, 3000);
+      }, 1000);
+    }, 2000);
   }, 3500);
 });
 // 第三页
@@ -517,19 +672,85 @@ const Peony_garden_fail = document.getElementById("Peony_garden_fail");
 const Synthetic_toothpaste_fail_left = document.getElementById(
   "Synthetic_fail_lefts"
 );
+function getNumberOfCakeElements() {
+  const cakeElements = document.querySelectorAll(".cake-block");
+  return cakeElements.length;
+}
+const initialCakeCount = 1; // 定义页面初始蛋糕数量为3个
+let currentCakeCount = getNumberOfCakeElements();
+const peonyCakePage = document.querySelector(".Peony_cake_page");
 Synthetic_toothpaste_fail_left.addEventListener("click", function () {
   Peony_garden_fail.style.display = "none";
   Peony_garden.style.display = "block";
-  toothX.style.left = "0px";
-  toothY.style.top = "0px";
+  tooth.style.left = "initial";
+  tooth.style.top = "initial";
+  specificCake.style.left = "initial";
+  specificCake.style.top = "initial";
+
+  function isColliding(element1, element2) {
+    const rect1 = element1.getBoundingClientRect();
+    const rect2 = element2.getBoundingClientRect();
+    return !(
+      rect1.right < rect2.left ||
+      rect1.left > rect2.right ||
+      rect1.bottom < rect2.top ||
+      rect1.top > rect2.bottom
+    );
+  }
+
+  currentCakeCount = getNumberOfCakeElements(); // 更新当前蛋糕数量
+  if (currentCakeCount < initialCakeCount) {
+    const cakesToAdd = initialCakeCount - currentCakeCount;
+    for (let i = 0; i < cakesToAdd; i++) {
+      const cakeOne = document.createElement("div");
+      cakeOne.classList.add("Peony_cake_page_img_one", "Cake-block");
+      const imgOne = document.createElement("img");
+      imgOne.src = "./images/slicesNine/cooky.png";
+      imgOne.alt = "";
+      imgOne.classList.add("cake-block");
+      cakeOne.appendChild(imgOne);
+      peonyCakePage.appendChild(cakeOne);
+
+      const cakeThree = document.createElement("div");
+      cakeThree.classList.add("Peony_cake_page_img_three", "Cake-block");
+      const imgThree = document.createElement("img");
+      imgThree.src = "./images/slicesNine/Mediumcake.png";
+      imgThree.alt = "";
+      imgThree.classList.add("cake-block");
+      cakeThree.appendChild(imgThree);
+      peonyCakePage.appendChild(cakeThree);
+
+      const cakeFour = document.createElement("div");
+      cakeFour.classList.add("Peony_cake_page_img_four", "Cake-block");
+      const imgFour = document.createElement("img");
+      imgFour.src = "./images/slicesNine/flatbread.png";
+      imgFour.alt = "";
+      imgFour.classList.add("cake-block");
+      cakeFour.appendChild(imgFour);
+      peonyCakePage.appendChild(cakeFour);
+      setTimeout(() => {
+        const cakeFive = document.querySelectorAll(".Peony_cake_page div");
+        cakeFive.forEach((cake) => {
+          const duration = Math.random() * 10 + 5; // 随机持续时间（5到15秒）
+          const delay = Math.random() * 5; // 随机延迟时间（0到5秒）
+          cake.style.animationDuration = `${duration}s`;
+          cake.style.animationDelay = `${delay}s`;
+          cake.style.animationDirection = "normal"; // 设置动画方向为从上往下
+        });
+        cakes.forEach((cake) => {
+          if (isColliding(tooth, cake)) {
+            cake.remove();
+          }
+        });
+      }, 1000);
+    }
+  }
 });
 const Synthetic_toothpaste_fail_right = document.getElementById(
   "Synthetic_fail_rights"
 );
 Synthetic_toothpaste_fail_right.addEventListener("click", function () {
-  Peony_garden_fail.style.display = "none";
-  onePage.style.display = "block";
-  onePage.style.opacity = 1;
+  location.reload();
 });
 
 // 选择
@@ -558,13 +779,298 @@ Peony_garden_success_img.addEventListener("click", function () {
   setTimeout(() => {
     Peony_garden_progress_pages.classList.add("fade-out-animation");
     // 添加背景色逐渐消失的动画类
-    Crafts.style.display = "block";
+    // Crafts.style.display = "block";
+    setTimeout(() => {
+      Toothpaste_Synthesis.style.display = "block";
+      Peony_garden_success.style.display = "none";
+      setTimeout(() => {
+        Toothpaste_Synthesis_one.classList.add("scaleEffect");
+        setTimeout(() => {
+          Toothpaste_Synthesis_content_one_tips.style.display = "block";
+          setTimeout(() => {
+            Toothpaste_Synthesis_content_one_tips.src =
+              "./images/slinesTwelve/3.png";
+            setTimeout(() => {
+              Toothpaste_Synthesis_content_two_page.style.display = "block";
+              setTimeout(() => {
+                Toothpaste_Synthesis_content_two_page.src =
+                  "./images/slinesTwelve/5.png";
+                Toothpaste_Synthesis_content_two_page.addEventListener(
+                  "click",
+                  () => {
+                    Toothpaste_Synthesis_content_two.style.display = "none";
+                    Toothpaste_Synthesis_content_three.style.display = "block";
+                    Composite_button.addEventListener("click", () => {
+                      Toothpaste_Synthesis_content_three_page_Around_page_img.classList.add(
+                        "Toothpaste_Synthesis_content_three_page_Around_page_img"
+                      );
+                      setTimeout(() => {
+                        Background_light.style.display = "block";
+                        Toothpaste_Synthesis_yellow_white.src =
+                          "./images/slinesTwelve/7.1.png";
+                        Toothpaste_middle.src = "./images/slinesTwelve/7.3.png";
+                        Toothpaste.style.width = "35%";
+                        Toothpaste.style.height = "75%";
+                        Toothpaste.style.zIndex = "2";
+                        Composite_button.style.display = "none";
+                        setTimeout(() => {
+                          Toothpaste_Synthesis_content_two.style.display =
+                            "block";
+                          Toothpaste_Synthesis_content_two_page.src =
+                            "./images/slinesTwelve/8.2.png";
+                          setTimeout(() => {
+                            Toothpaste_Synthesis_content_two.style.display =
+                              "none";
+
+                            Toothpaste.addEventListener(
+                              "touchstart",
+                              function (event) {
+                                // 记录触摸开始时的初始位置
+                                ToothpasteX =
+                                  event.touches[0].clientX -
+                                  Toothpaste.offsetLeft;
+                                ToothpasteY =
+                                  event.touches[0].clientY -
+                                  Toothpaste.offsetTop;
+                              }
+                            );
+                            Toothpaste.addEventListener(
+                              "touchmove",
+                              function (event) {
+                                // 阻止默认滚动行为
+                                event.preventDefault();
+
+                                // 计算船应该移动到的位置
+                                const x =
+                                  event.touches[0].clientX - ToothpasteX;
+                                const y =
+                                  event.touches[0].clientY - ToothpasteY;
+
+                                // 更新船的位置
+                                Toothpaste.style.left = x + "px";
+                                Toothpaste.style.top = y + "px";
+
+                                // 检测是否碰到了障碍物
+                                if (
+                                  isCollide(
+                                    Toothpaste,
+                                    Toothpaste_Synthesis_one
+                                  )
+                                ) {
+                                  health.src = "./images/slinesTwelve/9.png";
+                                  Toothpaste_Synthesis_content_three.style.display =
+                                    "none";
+                                  setTimeout(() => {
+                                    Toothpaste_Synthesis_content_two.style.display =
+                                      "block";
+                                    Toothpaste_Synthesis_content_two_page.style.pointerEvents =
+                                      "none";
+                                    setTimeout(() => {
+                                      Toothpaste_Synthesis_content_two_page.src =
+                                        "./images/slinesTwelve/10.png";
+                                      setTimeout(() => {
+                                        Toothpaste_Synthesis_content_one_tips.src =
+                                          "./images/slinesTwelve/11.png";
+                                      }, 1000);
+                                    }, 1000);
+                                  }, 1000);
+                                }
+                                if (
+                                  isCollide(
+                                    Toothpaste,
+                                    Toothpaste_Synthesis_yellow_white
+                                  )
+                                ) {
+                                  Toothpaste_Synthesis_yellow_white.style.display =
+                                    "none";
+                                  Background_light.style.display = "none";
+                                }
+                                function isCollide(element1, element2) {
+                                  const rect1 =
+                                    element1.getBoundingClientRect();
+                                  const rect2 =
+                                    element2.getBoundingClientRect();
+
+                                  return !(
+                                    rect1.right < rect2.left ||
+                                    rect1.left > rect2.right ||
+                                    rect1.bottom < rect2.top ||
+                                    rect1.top > rect2.bottom
+                                  );
+                                }
+                              }
+                            );
+                          }, 4000);
+                        }, 3000);
+                      }, 2000);
+                    });
+                  }
+                );
+              }, 2000);
+            }, 2000);
+          }, 1800);
+        }, 3500);
+      }, 1000);
+    }, 2000);
   }, 3500);
 });
 
 // 关闭打开合成牙膏
-const Toothpaste_Synthesis = document.createElement("Toothpaste_Synthesis");
+const Toothpaste_Synthesis = document.getElementById("Toothpaste_Synthesis");
+// 牙膏合成进度100%
+const Toothpaste_Synthesis_one = document.getElementById(
+  "Toothpaste_Synthesis_content_one_page"
+);
+const health = document.getElementById("health");
+const Toothpaste_Synthesis_content_one_tips = document.getElementById(
+  "Toothpaste_Synthesis_content_one_tips"
+);
+const Toothpaste_Synthesis_content_two_page = document.getElementById(
+  "Toothpaste_Synthesis_content_two_page"
+);
+const Toothpaste_Synthesis_content_three = document.getElementById(
+  "Toothpaste_Synthesis_content_three"
+);
+const Toothpaste_Synthesis_content_two = document.getElementById(
+  "Toothpaste_Synthesis_content_two"
+);
+const Toothpaste_Synthesis_content_three_page_Around_page =
+  document.querySelectorAll(
+    ".Toothpaste_Synthesis_content_three_page_Around_page img"
+  );
+const Toothpaste_Synthesis_content_three_page_Around_page_img =
+  document.getElementById(
+    "Toothpaste_Synthesis_content_three_page_Around_page"
+  );
+const Toothpaste_middle = document.getElementById(
+  "Toothpaste_Synthesis_content_three_page_middle"
+);
+const Composite_button = document.getElementById("Composite_button");
+const Toothpaste = document.getElementById("Toothpaste");
+const Toothpaste_Synthesis_yellow_white = document.getElementById(
+  "Toothpaste_Synthesis_yellow_white"
+);
+const Background_light = document.getElementById("Background_light");
+let ToothpasteX, ToothpasteY;
+
 Crafts.addEventListener("click", () => {
   Toothpaste_Synthesis.style.display = "block";
   Peony_garden_success.style.display = "none";
+  setTimeout(() => {
+    Toothpaste_Synthesis_one.classList.add("scaleEffect");
+    setTimeout(() => {
+      Toothpaste_Synthesis_content_one_tips.style.display = "block";
+      setTimeout(() => {
+        Toothpaste_Synthesis_content_one_tips.src =
+          "./images/slinesTwelve/3.png";
+        setTimeout(() => {
+          Toothpaste_Synthesis_content_two_page.style.display = "block";
+          setTimeout(() => {
+            Toothpaste_Synthesis_content_two_page.src =
+              "./images/slinesTwelve/5.png";
+            Toothpaste_Synthesis_content_two_page.addEventListener(
+              "click",
+              () => {
+                Toothpaste_Synthesis_content_two.style.display = "none";
+                Toothpaste_Synthesis_content_three.style.display = "block";
+                Composite_button.addEventListener("click", () => {
+                  Toothpaste_Synthesis_content_three_page_Around_page_img.classList.add(
+                    "Toothpaste_Synthesis_content_three_page_Around_page_img"
+                  );
+                  setTimeout(() => {
+                    Background_light.style.display = "block";
+                    Toothpaste_Synthesis_yellow_white.src =
+                      "./images/slinesTwelve/7.1.png";
+                    Toothpaste_middle.src = "./images/slinesTwelve/7.3.png";
+                    Toothpaste.style.width = "35%";
+                    Toothpaste.style.height = "75%";
+                    Toothpaste.style.zIndex = "2";
+                    Composite_button.style.display = "none";
+                    setTimeout(() => {
+                      Toothpaste_Synthesis_content_two.style.display = "block";
+                      Toothpaste_Synthesis_content_two_page.src =
+                        "./images/slinesTwelve/8.2.png";
+                      setTimeout(() => {
+                        Toothpaste_Synthesis_content_two.style.display = "none";
+
+                        Toothpaste.addEventListener(
+                          "touchstart",
+                          function (event) {
+                            // 记录触摸开始时的初始位置
+                            ToothpasteX =
+                              event.touches[0].clientX - Toothpaste.offsetLeft;
+                            ToothpasteY =
+                              event.touches[0].clientY - Toothpaste.offsetTop;
+                          }
+                        );
+                        Toothpaste.addEventListener(
+                          "touchmove",
+                          function (event) {
+                            // 阻止默认滚动行为
+                            event.preventDefault();
+
+                            // 计算船应该移动到的位置
+                            const x = event.touches[0].clientX - ToothpasteX;
+                            const y = event.touches[0].clientY - ToothpasteY;
+
+                            // 更新船的位置
+                            Toothpaste.style.left = x + "px";
+                            Toothpaste.style.top = y + "px";
+
+                            // 检测是否碰到了障碍物
+                            if (
+                              isCollide(Toothpaste, Toothpaste_Synthesis_one)
+                            ) {
+                              health.src = "./images/slinesTwelve/9.png";
+                              Toothpaste_Synthesis_content_three.style.display =
+                                "none";
+                              setTimeout(() => {
+                                Toothpaste_Synthesis_content_two.style.display =
+                                  "block";
+                                Toothpaste_Synthesis_content_two_page.style.pointerEvents =
+                                  "none";
+                                setTimeout(() => {
+                                  Toothpaste_Synthesis_content_two_page.src =
+                                    "./images/slinesTwelve/10.png";
+                                  setTimeout(() => {
+                                    Toothpaste_Synthesis_content_one_tips.src =
+                                      "./images/slinesTwelve/11.png";
+                                  }, 1000);
+                                }, 1000);
+                              }, 1000);
+                            }
+                            if (
+                              isCollide(
+                                Toothpaste,
+                                Toothpaste_Synthesis_yellow_white
+                              )
+                            ) {
+                              Toothpaste_Synthesis_yellow_white.style.display =
+                                "none";
+                              Background_light.style.display = "none";
+                            }
+                            function isCollide(element1, element2) {
+                              const rect1 = element1.getBoundingClientRect();
+                              const rect2 = element2.getBoundingClientRect();
+
+                              return !(
+                                rect1.right < rect2.left ||
+                                rect1.left > rect2.right ||
+                                rect1.bottom < rect2.top ||
+                                rect1.top > rect2.bottom
+                              );
+                            }
+                          }
+                        );
+                      }, 4000);
+                    }, 3000);
+                  }, 2000);
+                });
+              }
+            );
+          }, 2000);
+        }, 2000);
+      }, 1800);
+    }, 3500);
+  }, 1000);
 });

@@ -176,7 +176,7 @@ body {
 }
 .One_page_content_button > div {
   width: 30%;
-  height: 60%;
+  height: 40%;
   margin-left: 51px;
   position: absolute;
   left: 30px;
@@ -314,7 +314,7 @@ body {
 }
 .Two_page_content_tip {
   width: 100%;
-  height: 180px;
+  height: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -322,6 +322,7 @@ body {
 }
 .Two_page_content_tip_page {
   width: 80%;
+  height: 100%;
   box-sizing: content-box;
   display: flex;
   justify-content: center;
@@ -870,7 +871,7 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
 }
 .Synthetic_toothpaste_content_three {
   width: 100%;
-  height: 15%;
+  height: 20%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -896,8 +897,8 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
 }
 .Synthetic_toothpaste_content_three_Tips {
   display: none;
-  width: 15%;
-  height: 80%;
+  width: 25%;
+  height: 60%;
   transform: scale(0);
   transition: transform 2s;
 }
@@ -1164,15 +1165,15 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
   }
 }
 .Peony_garden_content_two_page_img_tooth {
-  left: 0; /* 初始位置左边距为0 */
-  top: 0; /* 初始位置上边距为0 */
+  left: 0;
+  top: 0;
   /* transition: left 2s, top 2s; */
-  cursor: move; /* 鼠标样式为移动图标 */
+  cursor: move;
 }
 
 .move {
-  left: 100px; /* 移动到左边距100px处 */
-  top: 100px; /* 移动到上边距100px处 */
+  left: 100px;
+  top: 100px;
 }
 
 /* 牡丹花成功 */
@@ -1262,6 +1263,278 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
   position: absolute;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.Toothpaste_Synthesis_content_one {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 10%;
+}
+.Toothpaste_Synthesis_content_one_page {
+  width: 35%;
+  height: 70%;
+  display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 10%;
+  transform: scale(0);
+}
+.Toothpaste_Synthesis_content_one_page > img {
+  width: 100%;
+  height: 100%;
+}
+.scaleEffect {
+  animation: toothpasteAnimation 3s ease forwards;
+}
+@keyframes toothpasteAnimation {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+/* .vanish {
+  animation: vanish 3s ease forwards;
+}
+
+@keyframes vanish {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+} */
+
+.Toothpaste_Synthesis_content_one_tips {
+  width: 35%;
+  height: 35%;
+}
+.Toothpaste_Synthesis_content_one_tips > img {
+  width: 100%;
+  height: 100%;
+}
+#Toothpaste_Synthesis_content_one_tips {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+#Toothpaste_Synthesis_content_two {
+  width: 100%;
+  height: 15%;
+  animation: toothpasteAnimation 3s ease forwards;
+}
+.Toothpaste_Synthesis_content_two {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Toothpaste_Synthesis_content_two_page {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Toothpaste_Synthesis_content_two_page > img {
+  width: 100%;
+  height: 100%;
+}
+#Toothpaste_Synthesis_content_two_page {
+  display: none;
+}
+.Toothpaste_Synthesis_content_three {
+  width: 100%;
+}
+#Toothpaste_Synthesis_content_three {
+  display: none;
+  width: 100%;
+  height: 50%;
+}
+.Toothpaste_Synthesis_content_three_page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#Toothpaste_Synthesis_yellow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.Toothpaste_Synthesis_yellow {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Toothpaste_Synthesis_yellow > img {
+  animation: zoom 1s infinite; /* 放大缩小动画，持续1秒，无限循环 */
+  width: 100%;
+  height: 100%;
+}
+#Background_light {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.Background_light {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Background_light > img {
+  animation: shake 0.5s infinite; /* 左右摇晃动画，持续0.5秒，无限循环 */
+}
+.Toothpaste_Synthesis_content_three_page_middle {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#Toothpaste {
+  cursor: move;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 70%;
+}
+#Toothpaste > img {
+  width: 100%;
+  height: 100%;
+}
+.Toothpaste_Synthesis_content_three_page_middle > img {
+  width: 25%;
+  height: 95%;
+  animation: shake 0.5s infinite; /* 左右摇晃动画，持续0.5秒，无限循环 */
+}
+.Toothpaste_Synthesis_content_three_page_Around {
+  position: absolute;
+  overflow: hidden;
+  /* display: none; */
+  width: 100%;
+  height: 100%;
+}
+.Toothpaste_Synthesis_content_three_page_Around_page {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.Composite_button {
+  width: 100%;
+  height: 17%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+.Composite_button > img {
+  width: 50%;
+  height: 100%;
+  animation: zoom 1s infinite; /* 放大缩小动画，持续1秒，无限循环 */
+}
+@keyframes slideInFromSidesOne {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-50%);
+    opacity: 1;
+  }
+}
+@keyframes slideInFromSidesTwo {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@keyframes slideInFromSidesThree {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+@keyframes rotateClockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes shrinkAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  90% {
+    transform: scale(0.1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* 新增一个包裹元素应用动画 */
+.Toothpaste_Synthesis_content_three_page_Around_page_img {
+  animation: rotateClockwise 3s infinite linear, shrinkAnimation 3s forwards;
+}
+.Toothpaste_Synthesis_content_three_page_Around_page > img {
+  margin: 0 10px;
+  max-width: 100%;
+  position: absolute;
+}
+.Toothpaste_Synthesis_content_three_page_Around_page > img:nth-child(1) {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: slideInFromSidesOne 1.5s ease forwards;
+  width: 30%;
+  height: 30%;
+}
+
+.Toothpaste_Synthesis_content_three_page_Around_page > img:nth-child(2) {
+  top: 35%;
+  left: 75%;
+  transform: translateX(-50%);
+  animation: slideInFromSidesTwo 1.5s ease forwards;
+  width: 20%;
+  height: 30%;
+}
+
+.Toothpaste_Synthesis_content_three_page_Around_page > img:nth-child(3) {
+  top: 50%;
+  left: 7%;
+  transform: translateY(-50%);
+  animation: slideInFromSidesThree 1.5s ease forwards;
+  width: 30%;
+  height: 30%;
 }
