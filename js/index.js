@@ -153,22 +153,21 @@ ship.addEventListener("click", function () {
         shipY = event.touches[0].clientY - ships.offsetTop;
       });
 
-      ships.addEventListener("touchmove", function (event) {
-        // 阻止默认滚动行为
-        event.preventDefault();
-        // if (!canMove) {
-        //   return;
-        // }
-        checkCollision();
+      ships.addEventListener(
+        "touchmove",
+        function (event) {
+          // 计算船应该移动到的位置
+          const x = event.touches[0].clientX - shipX;
+          const y = event.touches[0].clientY - shipY;
 
-        // 计算船应该移动到的位置
-        const x = event.touches[0].clientX - shipX;
-        const y = event.touches[0].clientY - shipY;
+          // 更新船的位置
+          ships.style.left = x + "px";
+          ships.style.top = y + "px";
 
-        // 更新船的位置
-        ships.style.left = x + "px";
-        ships.style.top = y + "px";
-      });
+          requestAnimationFrame(checkCollision);
+        },
+        { passive: true }
+      );
 
       // 隐藏成功和失败提示元素初始状态
       successMessage.style.display = "none";
