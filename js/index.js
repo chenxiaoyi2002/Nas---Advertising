@@ -3,7 +3,35 @@ var draggableElement = document.getElementById("draggableElement");
 var draggableElementMain = document.getElementById("draggableElementMain");
 let originalPosition = { x: 0, y: 0 };
 let offsetX, offsetY;
-let isDragging = false;
+const bgMusic = document.getElementById("bgMusic");
+const react_root = document.getElementById("music");
+const music_top = document.getElementById("music_img_page_stop");
+// 切换音乐播放状态
+function toggleMusic() {
+  if (bgMusic.paused) {
+    playBackgroundMusic();
+  } else {
+    pauseBackgroundMusic();
+  }
+}
+
+// 播放音乐
+function playBackgroundMusic() {
+  bgMusic.play();
+  react_root.classList.add("musicRotate");
+  music_top.style.display = "none";
+}
+
+// 暂停音乐
+function pauseBackgroundMusic() {
+  bgMusic.pause();
+  react_root.classList.remove("musicRotate");
+  music_top.style.display = "block";
+}
+// 跳过
+let skip = document.getElementById("skip");
+let skips = document.getElementById("skips");
+let Skip = document.getElementById("Skip");
 
 // 记录初始位置
 originalPosition.x = draggableElement.offsetLeft;
@@ -43,7 +71,10 @@ draggableElement.addEventListener("touchend", () => {
     // 拖拽到指定位置的处理逻辑
     draggableElement.style.display = "none";
     draggableElementMain.style.width = "25%";
-    draggableElementMain.style.height = "45%";
+    draggableElementMain.style.height = "55%";
+    bgMusic.play();
+    react_root.classList.add("musicRotate");
+    music_top.style.display = "none";
 
     draggableElementMain.querySelector("img").src =
       "./images/slicesTwo/ship.png";
@@ -73,7 +104,7 @@ draggableElement.addEventListener("touchend", () => {
               // 显示新的图片提示
             }, 1000);
           }, 500);
-        }, 5000);
+        }, 3000);
       }, 1000);
     }, 1000);
   } else {
@@ -113,7 +144,7 @@ ship.addEventListener("click", function () {
     shipTip.style.display = "none";
     setTimeout(() => {
       // 增加canMove 防止撞冰后鼠标移动事件继续触发
-      let canMove = true;
+      // let canMove = true;
 
       // 添加触摸事件监听器
       ships.addEventListener("touchstart", function (event) {
@@ -125,9 +156,9 @@ ship.addEventListener("click", function () {
       ships.addEventListener("touchmove", function (event) {
         // 阻止默认滚动行为
         event.preventDefault();
-        if (!canMove) {
-          return;
-        }
+        // if (!canMove) {
+        //   return;
+        // }
         checkCollision();
 
         // 计算船应该移动到的位置
@@ -281,7 +312,7 @@ Success_content_two_page.addEventListener("click", function () {
 });
 // 失败
 const fail_left = document.querySelector("#fail_left");
-const fail_right = document.querySelector("#fail_right");
+// const fail_right = document.querySelector("#fail_right");
 // 再来一次
 fail_left.addEventListener("click", function () {
   // 更换图片地址
@@ -292,16 +323,17 @@ fail_left.addEventListener("click", function () {
   failMessage.style.display = "none";
 });
 // 退出游戏
-fail_right.addEventListener("click", function () {
-  location.reload();
-});
+// fail_right.addEventListener("click", function () {
+//   location.reload();
+// });
 
 // 合成进度
 const craft = document.getElementById("craft");
 const craft_span = document.getElementById("craft_span");
 const Synthetic_toothpaste = document.getElementById("Synthetic_toothpaste");
-craft_span.addEventListener("click", function () {
+skip.addEventListener("click", function () {
   successMessage.style.display = "none";
+  failMessage.style.display = "none";
   Synthetic_toothpaste.style.display = "block";
   setTimeout(() => {
     // 触发向左移动
@@ -358,14 +390,14 @@ const Synthetic_toothpaste_fail = document.getElementById(
   "Synthetic_toothpaste_fail"
 );
 const Synthetic_fail_left = document.getElementById("Synthetic_fail_left");
-const Synthetic_fail_right = document.getElementById("Synthetic_fail_right");
+// const Synthetic_fail_right = document.getElementById("Synthetic_fail_right");
 Synthetic_fail_left.addEventListener("click", function () {
   Synthetic_toothpaste_fail.style.display = "none";
   Synthetic_toothpaste.style.display = "block";
 });
-Synthetic_fail_right.addEventListener("click", function () {
-  location.reload();
-});
+// Synthetic_fail_right.addEventListener("click", function () {
+//   location.reload();
+// });
 Select_A.addEventListener("click", () => {
   Synthetic_toothpaste.style.display = "none";
   Synthetic_toothpaste_success.style.display = "block";
@@ -546,8 +578,9 @@ const Peony_garden_content_one_page_img = document.querySelector(
 );
 const Peony_cake = document.getElementById("Peony_cake");
 const Peony_tips = document.getElementById("Peony_tips");
-craft_spans.addEventListener("click", function () {
+skips.addEventListener("click", function () {
   Synthetic_toothpaste_success.style.display = "none";
+  Synthetic_toothpaste_fail.style.display = "none";
   Peony_garden.style.display = "block";
   setTimeout(() => {
     Peony_garden_content_two_page_img.classList.add("move-right");
@@ -746,12 +779,12 @@ Synthetic_toothpaste_fail_left.addEventListener("click", function () {
     }
   }
 });
-const Synthetic_toothpaste_fail_right = document.getElementById(
-  "Synthetic_fail_rights"
-);
-Synthetic_toothpaste_fail_right.addEventListener("click", function () {
-  location.reload();
-});
+// const Synthetic_toothpaste_fail_right = document.getElementById(
+//   "Synthetic_fail_rights"
+// );
+// Synthetic_toothpaste_fail_right.addEventListener("click", function () {
+//   location.reload();
+// });
 
 // 选择
 const Lights = document.querySelector("#lights img");
@@ -952,9 +985,9 @@ const Toothpaste_Synthesis_yellow_white = document.getElementById(
 );
 const Background_light = document.getElementById("Background_light");
 let ToothpasteX, ToothpasteY;
-
-Crafts.addEventListener("click", () => {
+Skip.addEventListener("click", () => {
   Toothpaste_Synthesis.style.display = "block";
+  Peony_garden_fail.style.display = "none";
   Peony_garden_success.style.display = "none";
   setTimeout(() => {
     Toothpaste_Synthesis_one.classList.add("scaleEffect");

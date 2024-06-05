@@ -56,6 +56,19 @@
 
 <body>
   <div class="whole" id="react-root">
+    <!-- 音乐 -->
+    <div class="music" id="music">
+      <div class="music_img">
+        <div class="music_img_page" onclick="toggleMusic()">
+          <img src="./images/slicesOne/music.png" alt="">
+          <!-- 禁止音乐 -->
+          <div class="music_img_page_stop" id="music_img_page_stop"></div>
+        </div>
+        <div class=" music_img_audio">
+          <audio id="bgMusic" src="./music/1.mp3" loop autoplay></audio>
+        </div>
+      </div>
+    </div>
     <div id="one_page">
       <div class="One_page">
         <div class="One_page_background">
@@ -75,7 +88,6 @@
               <div class="One_page_content_title_right">
                 <img src="" alt="">
               </div>
-
             </div>
           </div>
           <div class="One_page_content_text">
@@ -134,9 +146,6 @@
           <div class="Two_page_content_two">
             <div class="Two_page_content_two_page">
               <div class="ice ice-block">
-                <img src="./images/slicesTwo/ice2.png" alt="">
-              </div>
-              <div class="ice ice-block">
                 <img src="./images/slicesTwo/ice1.png" alt="">
               </div>
               <div class="ice ice-block">
@@ -149,7 +158,10 @@
                 <img src="./images/slicesTwo/ice1.png" alt="">
               </div>
               <div class="ice ice-block">
-                <img src="./images/slicesTwo/ice1.png" alt="">
+                <img src="./images/slicesTwo/ice2.png" alt="">
+              </div>
+              <div class="ice ice-block">
+                <img src="./images/slicesTwo/ice2.png" alt="">
               </div>
 
             </div>
@@ -189,8 +201,8 @@
               <div class="Fail_content_three_page_left" id="fail_left">
                 <img src="./images/slicesThree/again.png" alt="">
               </div>
-              <div class="Fail_content_three_page_right" id="fail_right">
-                <img src="./images/slicesThree/quit.png" alt="">
+              <div class="Fail_content_three_page_right" id="skip">
+                <img src="./images/slicesThree/skip.png" alt="">
               </div>
             </div>
           </div>
@@ -288,7 +300,7 @@
           </div>
           <div class="Synthesis_progress" id="synthesis_progresss">
             <div class="Synthesis_progress_page" id="synthesis_progress_pages">
-              <img src="./images/slicesFour/schedule.png" alt="">
+              <img src="./images/slicesSeven/schedule.png" alt="">
             </div>
           </div>
           <div class="Success_content_one">
@@ -334,8 +346,8 @@
               <div class="Fail_content_three_page_left" id="Synthetic_fail_left">
                 <img id="Synthetic_toothpaste_fail_left" src="./images/slicesEight/again.png" alt="">
               </div>
-              <div class="Fail_content_three_page_right" id="Synthetic_fail_right">
-                <img id="Synthetic_toothpaste_fail_right" src="./images/slicesEight/quit.png" alt="">
+              <div class="Fail_content_three_page_right" id="skips">
+                <img id="Synthetic_toothpaste_fail_right" src="./images/slicesThree/skips.png" alt="">
               </div>
             </div>
           </div>
@@ -402,7 +414,7 @@
           </div>
           <div class="Synthesis_progress" id="Peony_garden_success_progresss">
             <div class="Synthesis_progress_page" id="Peony_garden_progress_pages">
-              <img src="./images/slicesFour/schedule.png" alt="">
+              <img src="./images/slicesTen/schedule.png" alt="">
             </div>
           </div>
           <div class="Success_content_one">
@@ -448,8 +460,8 @@
               <div class="Fail_content_three_page_left" id="Synthetic_fail_lefts">
                 <img id="Synthetic_toothpaste_fail_left" src="./images/slicesEleven/again.png" alt="">
               </div>
-              <div class="Fail_content_three_page_right" id="Synthetic_fail_rights">
-                <img id="Synthetic_toothpaste_fail_right" src="./images/slicesEleven/quit.png" alt="">
+              <div class="Fail_content_three_page_right" id="Skip">
+                <img id="Synthetic_toothpaste_fail_right" src="./images/slicesThree/Skipss.png" alt="">
               </div>
             </div>
           </div>
