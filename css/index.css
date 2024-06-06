@@ -391,7 +391,7 @@ body {
 }
 .Two_page_content_tip {
   width: 90%;
-  height: 20%;
+  height: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -403,9 +403,9 @@ body {
   width: 80%;
   height: 80%;
   box-sizing: content-box;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 .Two_page_content_tip_one {
   width: 100%;
@@ -490,14 +490,14 @@ body {
 }
 .ship_tip {
   width: 30%;
-  height: 100%;
+  height: 80%;
   position: relative;
-  top: -150px;
+  top: -100px;
   display: none;
 }
 .ship_tip > img {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
 }
 /* 失败页面 */
 #fail {
@@ -886,7 +886,7 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
 }
 .Synthetic_toothpaste_content {
   width: 100%;
-  height: 70%;
+  height: 83%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -922,7 +922,7 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
 #Synthetic_toothpaste_content_two {
   display: none;
   width: 100%;
-  height: 80%;
+  height: 70%;
 }
 .Synthetic_toothpaste_content_two {
   width: 100%;
@@ -1242,7 +1242,7 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
   display: none;
 }
 .move-right {
-  animation: moveRight 2s forwards, moveDown 2s 2s forwards;
+  animation: moveRight 1s forwards, moveDown 1s 1s forwards;
 }
 @keyframes moveRight {
   0% {
@@ -1634,4 +1634,68 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
   animation: slideInFromSidesThree 1.5s ease forwards;
   width: 30%;
   height: 30%;
+}
+/* 退出 */
+#quit {
+  display: none;
+}
+.quit_page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+.quit_page_background {
+  width: 100vw;
+  height: 100vh;
+}
+.quit_page_background > img {
+  width: 100%;
+  height: 100%;
+}
+.quit_page_content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.quit_page_content_one {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.quit_page_content_one > img {
+  width: 80%;
+  height: 100%;
+}
+.quit_page_content_two {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.quit_page_content_two > img {
+  height: 100%;
+  width: 40%;
+}
+.quit_page_content_three {
+  width: 100%;
+  height: 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+.quit_page_content_three > img {
+  width: 50%;
+  height: 100%;
 }

@@ -169,10 +169,6 @@ ship.addEventListener("click", function () {
         { passive: true }
       );
 
-      // 隐藏成功和失败提示元素初始状态
-      successMessage.style.display = "none";
-      failMessage.style.display = "none";
-
       function checkCollision() {
         const ice = document.querySelectorAll(".ice");
         const shipsRect = ships.getBoundingClientRect();
@@ -311,7 +307,7 @@ Success_content_two_page.addEventListener("click", function () {
           }, 2000);
         }, 2000);
       }, 1000);
-    }, 2000);
+    }, 1800);
   }, 3500);
 });
 // 失败
@@ -456,111 +452,91 @@ Synthetic_success_content_img.addEventListener("click", function () {
               Peony_garden_content_one_page_img.src =
                 "./images/slicesNine/EatFlowers.png";
               setTimeout(() => {
-                Peony_garden_content_one_page_img.src =
-                  "./images/slicesNine/Don'teat.png";
+                Peony_garden_content_one_page.style.display = "none";
+                Peony_cake.style.display = "block";
                 setTimeout(() => {
-                  Peony_garden_content_one_page_img.src =
-                    "./images/slicesNine/ReceivingFlowers.png";
+                  Peony_tips.style.display = "none";
                   setTimeout(() => {
-                    Peony_garden_content_one_page.style.display = "none";
-                    Peony_cake.style.display = "block";
-                    setTimeout(() => {
-                      Peony_tips.style.display = "none";
+                    cakes.forEach((cake) => {
+                      const duration = Math.random() * 10 + 5; // 随机持续时间（5到15秒）
+                      const delay = Math.random() * 5; // 随机延迟时间（0到5秒）
+
+                      cake.style.animationDuration = `${duration}s`;
+                      cake.style.animationDelay = `${delay}s`;
+                      cake.style.animationDirection = "normal"; // 设置动画方向为从上往下
                       setTimeout(() => {
-                        cakes.forEach((cake) => {
-                          const duration = Math.random() * 10 + 5; // 随机持续时间（5到15秒）
-                          const delay = Math.random() * 5; // 随机延迟时间（0到5秒）
+                        tooth.addEventListener("touchstart", function (event) {
+                          // 记录触摸开始时的初始位置
+                          toothX = event.touches[0].clientX - tooth.offsetLeft;
+                          toothY = event.touches[0].clientY - tooth.offsetTop;
+                        });
 
-                          cake.style.animationDuration = `${duration}s`;
-                          cake.style.animationDelay = `${delay}s`;
-                          cake.style.animationDirection = "normal"; // 设置动画方向为从上往下
-                          setTimeout(() => {
-                            tooth.addEventListener(
-                              "touchstart",
-                              function (event) {
-                                // 记录触摸开始时的初始位置
-                                toothX =
-                                  event.touches[0].clientX - tooth.offsetLeft;
-                                toothY =
-                                  event.touches[0].clientY - tooth.offsetTop;
-                              }
+                        tooth.addEventListener("touchmove", function (event) {
+                          // 阻止默认滚动行为
+                          event.preventDefault();
+
+                          // 计算船应该移动到的位置
+                          const x = event.touches[0].clientX - toothX;
+                          const y = event.touches[0].clientY - toothY;
+
+                          // 更新船的位置
+                          tooth.style.left = x + "px";
+                          tooth.style.top = y + "px";
+
+                          // 获取具有特定类名的元素数量
+                          function getNumberOfElementsWithClass(className) {
+                            return document.getElementsByClassName(
+                              className
+                            ).length;
+                          }
+
+                          // 调用函数获取Cake-block的数量
+                          const numberOfCakeBlocks =
+                            getNumberOfElementsWithClass("cake-block");
+                          console.log(
+                            "Cake-block的数量为：" + numberOfCakeBlocks
+                          );
+                          if (numberOfCakeBlocks <= 2) {
+                            // 成功吃掉三个蛋糕
+                            Peony_garden.style.display = "none";
+                            Peony_garden_success.style.display = "block";
+                            // 重置
+
+                            return; // 结束事件处理程序
+                          } else if (isColliding(tooth, specificCake)) {
+                            Peony_garden.style.display = "none";
+                            Peony_garden_success.style.display = "block";
+                            return;
+                          }
+
+                          // 检查是否与蛋糕碰撞
+                          cakes.forEach((cake) => {
+                            if (isColliding(tooth, cake)) {
+                              // 如果碰撞，则吃掉蛋糕
+                              cake.remove();
+                            }
+                          });
+
+                          // 检测两个元素是否碰撞
+                          function isColliding(element1, element2) {
+                            const rect1 = element1.getBoundingClientRect();
+                            const rect2 = element2.getBoundingClientRect();
+                            return !(
+                              rect1.right < rect2.left ||
+                              rect1.left > rect2.right ||
+                              rect1.bottom < rect2.top ||
+                              rect1.top > rect2.bottom
                             );
-
-                            tooth.addEventListener(
-                              "touchmove",
-                              function (event) {
-                                // 阻止默认滚动行为
-                                event.preventDefault();
-
-                                // 计算船应该移动到的位置
-                                const x = event.touches[0].clientX - toothX;
-                                const y = event.touches[0].clientY - toothY;
-
-                                // 更新船的位置
-                                tooth.style.left = x + "px";
-                                tooth.style.top = y + "px";
-
-                                // 获取具有特定类名的元素数量
-                                function getNumberOfElementsWithClass(
-                                  className
-                                ) {
-                                  return document.getElementsByClassName(
-                                    className
-                                  ).length;
-                                }
-
-                                // 调用函数获取Cake-block的数量
-                                const numberOfCakeBlocks =
-                                  getNumberOfElementsWithClass("cake-block");
-                                console.log(
-                                  "Cake-block的数量为：" + numberOfCakeBlocks
-                                );
-                                if (numberOfCakeBlocks <= 0) {
-                                  // 成功吃掉三个蛋糕
-                                  Peony_garden.style.display = "none";
-                                  Peony_garden_fail.style.display = "block";
-                                  // 重置
-
-                                  return; // 结束事件处理程序
-                                } else if (isColliding(tooth, specificCake)) {
-                                  Peony_garden.style.display = "none";
-                                  Peony_garden_success.style.display = "block";
-                                  return;
-                                }
-
-                                // 检查是否与蛋糕碰撞
-                                cakes.forEach((cake) => {
-                                  if (isColliding(tooth, cake)) {
-                                    // 如果碰撞，则吃掉蛋糕
-                                    cake.remove();
-                                  }
-                                });
-
-                                // 检测两个元素是否碰撞
-                                function isColliding(element1, element2) {
-                                  const rect1 =
-                                    element1.getBoundingClientRect();
-                                  const rect2 =
-                                    element2.getBoundingClientRect();
-                                  return !(
-                                    rect1.right < rect2.left ||
-                                    rect1.left > rect2.right ||
-                                    rect1.bottom < rect2.top ||
-                                    rect1.top > rect2.bottom
-                                  );
-                                }
-                              }
-                            );
-                          }, 1000);
+                          }
                         });
                       }, 1000);
-                    }, 1000);
+                    });
                   }, 1000);
-                }, 3000);
-              }, 3000);
-            }, 3000);
-          }, 3000);
-        }, 3000);
+                }, 1000);
+              }, 1000);
+            }, 2000);
+          }, 2000);
+        }, 2000);
       }, 1000);
     }, 2000);
   }, 3500);
@@ -682,16 +658,16 @@ skips.addEventListener("click", function () {
                             );
                           }
                         });
-                      }, 1000);
+                      });
                     });
                   }, 1000);
                 }, 1000);
               }, 1000);
-            }, 3000);
-          }, 3000);
-        }, 3000);
-      }, 3000);
-    }, 3000);
+            }, 2000);
+          }, 2000);
+        }, 2000);
+      }, 2000);
+    }, 2000);
   }, 1000);
 });
 
@@ -857,103 +833,126 @@ Peony_garden_success_img.addEventListener("click", function () {
                         Toothpaste.style.height = "75%";
                         Toothpaste.style.zIndex = "2";
                         Composite_button.style.display = "none";
+                        Toothpaste_Synthesis_content_two.style.zIndex = "9";
+                        Toothpaste_Synthesis_content_two.style.position =
+                          "absolute";
                         setTimeout(() => {
                           Toothpaste_Synthesis_content_two.style.display =
                             "block";
                           Toothpaste_Synthesis_content_two_page.src =
                             "./images/slinesTwelve/8.2.png";
+                          Toothpaste_Synthesis_content_two.style.display =
+                            "none";
                           setTimeout(() => {
                             Toothpaste_Synthesis_content_two.style.display =
-                              "none";
+                              "block";
+                            setTimeout(() => {
+                              Toothpaste_Synthesis_content_two_page.style.display =
+                                "none";
 
-                            Toothpaste.addEventListener(
-                              "touchstart",
-                              function (event) {
-                                // 记录触摸开始时的初始位置
-                                ToothpasteX =
-                                  event.touches[0].clientX -
-                                  Toothpaste.offsetLeft;
-                                ToothpasteY =
-                                  event.touches[0].clientY -
-                                  Toothpaste.offsetTop;
-                              }
-                            );
-                            Toothpaste.addEventListener(
-                              "touchmove",
-                              function (event) {
-                                // 阻止默认滚动行为
-                                event.preventDefault();
+                              Toothpaste.addEventListener(
+                                "touchstart",
+                                function (event) {
+                                  // 记录触摸开始时的初始位置
+                                  ToothpasteX =
+                                    event.touches[0].clientX -
+                                    Toothpaste.offsetLeft;
+                                  ToothpasteY =
+                                    event.touches[0].clientY -
+                                    Toothpaste.offsetTop;
+                                }
+                              );
+                              Toothpaste.addEventListener(
+                                "touchmove",
+                                function (event) {
+                                  // 阻止默认滚动行为
+                                  event.preventDefault();
 
-                                // 计算船应该移动到的位置
-                                const x =
-                                  event.touches[0].clientX - ToothpasteX;
-                                const y =
-                                  event.touches[0].clientY - ToothpasteY;
+                                  // 计算船应该移动到的位置
+                                  const x =
+                                    event.touches[0].clientX - ToothpasteX;
+                                  const y =
+                                    event.touches[0].clientY - ToothpasteY;
 
-                                // 更新船的位置
-                                Toothpaste.style.left = x + "px";
-                                Toothpaste.style.top = y + "px";
+                                  // 更新船的位置
+                                  Toothpaste.style.left = x + "px";
+                                  Toothpaste.style.top = y + "px";
 
-                                // 检测是否碰到了障碍物
-                                if (
-                                  isCollide(
-                                    Toothpaste,
-                                    Toothpaste_Synthesis_one
-                                  )
-                                ) {
-                                  health.src = "./images/slinesTwelve/9.png";
-                                  Toothpaste_Synthesis_content_three.style.display =
-                                    "none";
-                                  setTimeout(() => {
+                                  // 检测是否碰到了障碍物
+                                  if (
+                                    isCollide(
+                                      Toothpaste,
+                                      Toothpaste_Synthesis_one
+                                    )
+                                  ) {
+                                    Toothpaste_Synthesis_content_one_tips.src =
+                                      "./images/slinesTwelve/11.png";
+
+                                    health.src = "./images/slinesTwelve/9.png";
                                     Toothpaste_Synthesis_content_two.style.display =
                                       "block";
-                                    Toothpaste_Synthesis_content_two_page.style.pointerEvents =
-                                      "none";
-                                    setTimeout(() => {
-                                      Toothpaste_Synthesis_content_two_page.src =
-                                        "./images/slinesTwelve/10.png";
-                                      setTimeout(() => {
-                                        Toothpaste_Synthesis_content_one_tips.src =
-                                          "./images/slinesTwelve/11.png";
-                                      }, 1000);
-                                    }, 1000);
-                                  }, 1000);
-                                }
-                                if (
-                                  isCollide(
-                                    Toothpaste,
-                                    Toothpaste_Synthesis_yellow_white
-                                  )
-                                ) {
-                                  Toothpaste_Synthesis_yellow_white.style.display =
-                                    "none";
-                                  Background_light.style.display = "none";
-                                }
-                                function isCollide(element1, element2) {
-                                  const rect1 =
-                                    element1.getBoundingClientRect();
-                                  const rect2 =
-                                    element2.getBoundingClientRect();
 
-                                  return !(
-                                    rect1.right < rect2.left ||
-                                    rect1.left > rect2.right ||
-                                    rect1.bottom < rect2.top ||
-                                    rect1.top > rect2.bottom
-                                  );
+                                    Toothpaste_Synthesis_content_three.style.display =
+                                      "none";
+                                    Toothpaste_Synthesis_content_two.style.zIndex =
+                                      "0";
+                                    Toothpaste_Synthesis_content_two.style.position =
+                                      "relative";
+
+                                    setTimeout(() => {
+                                      setTimeout(() => {
+                                        Toothpaste_Synthesis_content_two.style.display =
+                                          "block";
+
+                                        Toothpaste_Synthesis_content_two_page.src =
+                                          "./images/slinesTwelve/10.png";
+
+                                        var quit =
+                                          document.getElementById("quit");
+                                        setInterval(() => {
+                                          Toothpaste_Synthesis.style.display =
+                                            "none";
+                                          quit.style.display = "block";
+                                        }, 1000);
+                                      }, 3000);
+                                    }, 1000);
+                                  }
+                                  if (
+                                    isCollide(
+                                      Toothpaste,
+                                      Toothpaste_Synthesis_yellow_white
+                                    )
+                                  ) {
+                                    Toothpaste_Synthesis_yellow_white.style.display =
+                                      "none";
+                                    Background_light.style.display = "none";
+                                  }
+                                  function isCollide(element1, element2) {
+                                    const rect1 =
+                                      element1.getBoundingClientRect();
+                                    const rect2 =
+                                      element2.getBoundingClientRect();
+
+                                    return !(
+                                      rect1.right < rect2.left ||
+                                      rect1.left > rect2.right ||
+                                      rect1.bottom < rect2.top ||
+                                      rect1.top > rect2.bottom
+                                    );
+                                  }
                                 }
-                              }
-                            );
-                          }, 4000);
-                        }, 3000);
-                      }, 2000);
+                              );
+                            }, 4000);
+                          }, 500);
+                        }, 1500);
+                      }, 1500);
                     });
                   }
                 );
-              }, 2000);
-            }, 2000);
-          }, 1800);
-        }, 3500);
+              }, 1500);
+            }, 1500);
+          }, 1600);
+        }, 3000);
       }, 1000);
     }, 2000);
   }, 3500);
@@ -975,7 +974,7 @@ const Toothpaste_Synthesis_content_two_page = document.getElementById(
 const Toothpaste_Synthesis_content_three = document.getElementById(
   "Toothpaste_Synthesis_content_three"
 );
-const Toothpaste_Synthesis_content_two = document.getElementById(
+var Toothpaste_Synthesis_content_two = document.getElementById(
   "Toothpaste_Synthesis_content_two"
 );
 const Toothpaste_Synthesis_content_three_page_Around_page =
@@ -994,132 +993,142 @@ const Toothpaste = document.getElementById("Toothpaste");
 const Toothpaste_Synthesis_yellow_white = document.getElementById(
   "Toothpaste_Synthesis_yellow_white"
 );
-const Toothpaste_Synthesis_index = document.getElementById(
-  "Toothpaste_Synthesis_content_two_pages"
-);
 const Background_light = document.getElementById("Background_light");
 let ToothpasteX, ToothpasteY;
-Skip.addEventListener("click", () => {
-  Toothpaste_Synthesis.style.display = "block";
-  Peony_garden_fail.style.display = "none";
-  Peony_garden_success.style.display = "none";
-  setTimeout(() => {
-    Toothpaste_Synthesis_one.classList.add("scaleEffect");
-    setTimeout(() => {
-      Toothpaste_Synthesis_content_one_tips.style.display = "block";
-      setTimeout(() => {
-        Toothpaste_Synthesis_content_one_tips.src =
-          "./images/slinesTwelve/3.png";
-        setTimeout(() => {
-          Toothpaste_Synthesis_content_two_page.style.display = "block";
-          setTimeout(() => {
-            Toothpaste_Synthesis_content_two_page.src =
-              "./images/slinesTwelve/5.png";
-            Toothpaste_Synthesis_content_two_page.addEventListener(
-              "click",
-              () => {
-                Toothpaste_Synthesis_content_two.style.display = "none";
-                Toothpaste_Synthesis_content_three.style.display = "block";
-                Composite_button.addEventListener("click", () => {
-                  Toothpaste_Synthesis_content_three_page_Around_page_img.classList.add(
-                    "Toothpaste_Synthesis_content_three_page_Around_page_img"
-                  );
-                  Toothpaste.style.zIndex = "2";
+// Skip.addEventListener("click", () => {
+//   Toothpaste_Synthesis.style.display = "block";
+//   Peony_garden_fail.style.display = "none";
+//   Peony_garden_success.style.display = "none";
+//   setTimeout(() => {
+//     Toothpaste_Synthesis_one.classList.add("scaleEffect");
+//     setTimeout(() => {
+//       Toothpaste_Synthesis_content_one_tips.style.display = "block";
+//       setTimeout(() => {
+//         Toothpaste_Synthesis_content_one_tips.src =
+//           "./images/slinesTwelve/3.png";
+//         setTimeout(() => {
+//           Toothpaste_Synthesis_content_two_page.style.display = "block";
+//           setTimeout(() => {
+//             Toothpaste_Synthesis_content_two_page.src =
+//               "./images/slinesTwelve/5.png";
+//             Toothpaste_Synthesis_content_two_page.addEventListener(
+//               "click",
+//               () => {
+//                 Toothpaste_Synthesis_content_two.style.display = "none";
+//                 Toothpaste_Synthesis_content_three.style.display = "block";
+//                 Composite_button.addEventListener("click", () => {
+//                   Toothpaste_Synthesis_content_three_page_Around_page_img.classList.add(
+//                     "Toothpaste_Synthesis_content_three_page_Around_page_img"
+//                   );
+//                   Toothpaste.style.zIndex = "2";
 
-                  setTimeout(() => {
-                    Background_light.style.display = "block";
-                    Toothpaste_Synthesis_yellow_white.src =
-                      "./images/slinesTwelve/7.1.png";
-                    Toothpaste_middle.src = "./images/slinesTwelve/7.3.png";
-                    Toothpaste.style.width = "35%";
-                    Toothpaste.style.height = "75%";
-                    Composite_button.style.display = "none";
-                    setTimeout(() => {
-                      Toothpaste_Synthesis_content_two.style.display = "block";
-                      Toothpaste_Synthesis_index.style.zIndex = "2";
-                      Toothpaste_Synthesis_content_two_page.src =
-                        "./images/slinesTwelve/8.2.png";
-                      setTimeout(() => {
-                        Toothpaste_Synthesis_content_two.style.display = "none";
+//                   setTimeout(() => {
+//                     Background_light.style.display = "block";
+//                     Toothpaste_Synthesis_yellow_white.src =
+//                       "./images/slinesTwelve/7.1.png";
+//                     Toothpaste_middle.src = "./images/slinesTwelve/7.3.png";
+//                     Toothpaste.style.width = "35%";
+//                     Toothpaste.style.height = "75%";
+//                     Composite_button.style.display = "none";
+//                     Toothpaste_Synthesis_content_two.style.zIndex = "9";
+//                     Toothpaste_Synthesis_content_two.style.position =
+//                       "absolute";
+//                     setTimeout(() => {
+//                       Toothpaste_Synthesis_content_two.style.display = "block";
+//                       Toothpaste_Synthesis_content_two_page.src =
+//                         "./images/slinesTwelve/8.2.png";
+//                       setTimeout(() => {
+//                         Toothpaste_Synthesis_content_two.style.display = "none";
+//                         Toothpaste_Synthesis_content_two.style.zIndex = "0";
+//                         Toothpaste_Synthesis_content_two.style.position =
+//                           "relative";
+//                         Toothpaste.addEventListener(
+//                           "touchstart",
+//                           function (event) {
+//                             // 记录触摸开始时的初始位置
+//                             ToothpasteX =
+//                               event.touches[0].clientX - Toothpaste.offsetLeft;
+//                             ToothpasteY =
+//                               event.touches[0].clientY - Toothpaste.offsetTop;
+//                           }
+//                         );
+//                         Toothpaste.addEventListener(
+//                           "touchmove",
+//                           function (event) {
+//                             // 阻止默认滚动行为
+//                             event.preventDefault();
 
-                        Toothpaste.addEventListener(
-                          "touchstart",
-                          function (event) {
-                            // 记录触摸开始时的初始位置
-                            ToothpasteX =
-                              event.touches[0].clientX - Toothpaste.offsetLeft;
-                            ToothpasteY =
-                              event.touches[0].clientY - Toothpaste.offsetTop;
-                          }
-                        );
-                        Toothpaste.addEventListener(
-                          "touchmove",
-                          function (event) {
-                            // 阻止默认滚动行为
-                            event.preventDefault();
+//                             // 计算船应该移动到的位置
+//                             const x = event.touches[0].clientX - ToothpasteX;
+//                             const y = event.touches[0].clientY - ToothpasteY;
 
-                            // 计算船应该移动到的位置
-                            const x = event.touches[0].clientX - ToothpasteX;
-                            const y = event.touches[0].clientY - ToothpasteY;
+//                             // 更新船的位置
+//                             Toothpaste.style.left = x + "px";
+//                             Toothpaste.style.top = y + "px";
 
-                            // 更新船的位置
-                            Toothpaste.style.left = x + "px";
-                            Toothpaste.style.top = y + "px";
+//                             // 检测是否碰到了障碍物
+//                             if (
+//                               isCollide(Toothpaste, Toothpaste_Synthesis_one)
+//                             ) {
+//                               health.src = "./images/slinesTwelve/9.png";
+//                               Toothpaste_Synthesis_content_one_tips.src =
+//                                 "./images/slinesTwelve/11.png";
+//                               Toothpaste_Synthesis_content_three.style.display =
+//                                 "none";
+//                               setTimeout(() => {
+//                                 Toothpaste_Synthesis_content_two.style.display =
+//                                   "block";
+//                                 Toothpaste_Synthesis_content_two_page.style.pointerEvents =
+//                                   "none";
+//                                 setTimeout(() => {
+//                                   Toothpaste_Synthesis_content_two_page.src =
+//                                     "./images/slinesTwelve/10.png";
+//                                   var quit = document.getElementById("quit");
+//                                   setInterval(() => {
+//                                     Toothpaste_Synthesis.style.display = "none";
+//                                     quit.style.display = "block";
+//                                   });
+//                                 }, 2000);
+//                               }, 1000);
+//                             }
+//                             if (
+//                               isCollide(
+//                                 Toothpaste,
+//                                 Toothpaste_Synthesis_yellow_white
+//                               )
+//                             ) {
+//                               Toothpaste_Synthesis_yellow_white.style.display =
+//                                 "none";
+//                               Background_light.style.display = "none";
+//                             }
+//                             function isCollide(element1, element2) {
+//                               const rect1 = element1.getBoundingClientRect();
+//                               const rect2 = element2.getBoundingClientRect();
 
-                            // 检测是否碰到了障碍物
-                            if (
-                              isCollide(Toothpaste, Toothpaste_Synthesis_one)
-                            ) {
-                              health.src = "./images/slinesTwelve/9.png";
-                              Toothpaste_Synthesis_content_three.style.display =
-                                "none";
-                              setTimeout(() => {
-                                Toothpaste_Synthesis_content_two.style.display =
-                                  "block";
-                                Toothpaste_Synthesis_content_two_page.style.pointerEvents =
-                                  "none";
-                                setTimeout(() => {
-                                  Toothpaste_Synthesis_content_two_page.src =
-                                    "./images/slinesTwelve/10.png";
-                                  setTimeout(() => {
-                                    Toothpaste_Synthesis_content_one_tips.src =
-                                      "./images/slinesTwelve/11.png";
-                                  }, 1000);
-                                }, 1000);
-                              }, 1000);
-                            }
-                            if (
-                              isCollide(
-                                Toothpaste,
-                                Toothpaste_Synthesis_yellow_white
-                              )
-                            ) {
-                              Toothpaste_Synthesis_yellow_white.style.display =
-                                "none";
-                              Background_light.style.display = "none";
-                            }
-                            function isCollide(element1, element2) {
-                              const rect1 = element1.getBoundingClientRect();
-                              const rect2 = element2.getBoundingClientRect();
-
-                              return !(
-                                rect1.right < rect2.left ||
-                                rect1.left > rect2.right ||
-                                rect1.bottom < rect2.top ||
-                                rect1.top > rect2.bottom
-                              );
-                            }
-                          }
-                        );
-                      }, 4000);
-                    }, 3000);
-                  }, 2000);
-                });
-              }
-            );
-          }, 2000);
-        }, 2000);
-      }, 1800);
-    }, 3500);
-  }, 1000);
+//                               return !(
+//                                 rect1.right < rect2.left ||
+//                                 rect1.left > rect2.right ||
+//                                 rect1.bottom < rect2.top ||
+//                                 rect1.top > rect2.bottom
+//                               );
+//                             }
+//                           }
+//                         );
+//                       }, 4000);
+//                     }, 3000);
+//                   }, 2000);
+//                 });
+//               }
+//             );
+//           }, 2000);
+//         }, 2000);
+//       }, 1800);
+//     }, 3500);
+//   }, 1000);
+// });
+var quit_page_content_three = document.getElementById(
+  "quit_page_content_three"
+);
+quit_page_content_three.addEventListener("click", function () {
+  location.reload();
 });
