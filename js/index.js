@@ -233,8 +233,8 @@ ship.addEventListener("click", function () {
           twoPage.style.display = "none";
         }
       });
-    }, 1000);
-  }, 1000);
+    }, 800);
+  }, 800);
 });
 // 修改，牙在冰的上下左右100px内才算碰上，可修改betweenNum
 
@@ -268,10 +268,15 @@ const synthesis_progress = document.getElementById("synthesis_progress");
 const Synthesis_progress_page = document.getElementById(
   "synthesis_progress_page"
 );
+let shake = document.getElementById("shake");
+let OpenBag = document.getElementById("OpenBag");
 Success_content_two_page.addEventListener("click", function () {
   // 更换图片地址
   light.src = "./images/slicesFour/strip.png";
   prize.src = "./images/slicesFour/87.png";
+  OpenBag.style.width = "80%";
+  OpenBag.style.height = "80%";
+  shake.style.height = "80%";
   Success_content_two_page.src = "./images/slicesFour/congratulations.png";
   yellow.style.display = "block";
   synthesis_progress.style.display = "block";
@@ -425,6 +430,9 @@ Synthetic_success_content_img.addEventListener("click", function () {
   // 更换图片地址
   lights.src = "./images/slicesSeven/145.png";
   prizes.src = "./images/slicesSeven/PN-SC.png";
+  shake.style.height = "80%";
+  Synthetic_success_content_img.style.width = "80%";
+  Synthetic_success_content_img.style.height = "80%";
   Synthetic_success_content_img.src =
     "./images/slicesSeven/congratulations.png";
   yellows.style.display = "block";
@@ -803,6 +811,10 @@ Peony_garden_success_img.addEventListener("click", function () {
   // 更换图片地址
   Lights.src = "./images/slicesTen/157.png";
   Prizes.src = "./images/slicesTen/Withdraw.png";
+  shake.style.height = "80%";
+
+  Peony_garden_success_img.style.width = "80%";
+  Peony_garden_success_img.style.height = "80%";
   Peony_garden_success_img.src = "./images/slicesTen/congratulations.png";
   yellows_three.style.display = "block";
   Peony_garden_success_progresss.style.display = "block";
@@ -982,6 +994,9 @@ const Toothpaste = document.getElementById("Toothpaste");
 const Toothpaste_Synthesis_yellow_white = document.getElementById(
   "Toothpaste_Synthesis_yellow_white"
 );
+const Toothpaste_Synthesis_index = document.getElementById(
+  "Toothpaste_Synthesis_content_two_pages"
+);
 const Background_light = document.getElementById("Background_light");
 let ToothpasteX, ToothpasteY;
 Skip.addEventListener("click", () => {
@@ -1009,6 +1024,8 @@ Skip.addEventListener("click", () => {
                   Toothpaste_Synthesis_content_three_page_Around_page_img.classList.add(
                     "Toothpaste_Synthesis_content_three_page_Around_page_img"
                   );
+                  Toothpaste.style.zIndex = "2";
+
                   setTimeout(() => {
                     Background_light.style.display = "block";
                     Toothpaste_Synthesis_yellow_white.src =
@@ -1016,10 +1033,10 @@ Skip.addEventListener("click", () => {
                     Toothpaste_middle.src = "./images/slinesTwelve/7.3.png";
                     Toothpaste.style.width = "35%";
                     Toothpaste.style.height = "75%";
-                    Toothpaste.style.zIndex = "2";
                     Composite_button.style.display = "none";
                     setTimeout(() => {
                       Toothpaste_Synthesis_content_two.style.display = "block";
+                      Toothpaste_Synthesis_index.style.zIndex = "2";
                       Toothpaste_Synthesis_content_two_page.src =
                         "./images/slinesTwelve/8.2.png";
                       setTimeout(() => {
