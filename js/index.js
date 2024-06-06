@@ -841,15 +841,14 @@ Peony_garden_success_img.addEventListener("click", function () {
                             "block";
                           Toothpaste_Synthesis_content_two_page.src =
                             "./images/slinesTwelve/8.2.png";
-                          Toothpaste_Synthesis_content_two.style.display =
-                            "none";
                           setTimeout(() => {
                             Toothpaste_Synthesis_content_two.style.display =
-                              "block";
-                            setTimeout(() => {
-                              Toothpaste_Synthesis_content_two_page.style.display =
-                                "none";
+                              "none";
 
+                            Toothpaste_Synthesis_content_two_page.src =
+                              "./images/slinesTwelve/10.png";
+
+                            setTimeout(() => {
                               Toothpaste.addEventListener(
                                 "touchstart",
                                 function (event) {
@@ -885,12 +884,13 @@ Peony_garden_success_img.addEventListener("click", function () {
                                       Toothpaste_Synthesis_one
                                     )
                                   ) {
+                                    Toothpaste_Synthesis_content_two.style.display =
+                                      "block";
+
                                     Toothpaste_Synthesis_content_one_tips.src =
                                       "./images/slinesTwelve/11.png";
 
                                     health.src = "./images/slinesTwelve/9.png";
-                                    Toothpaste_Synthesis_content_two.style.display =
-                                      "block";
 
                                     Toothpaste_Synthesis_content_three.style.display =
                                       "none";
@@ -900,22 +900,14 @@ Peony_garden_success_img.addEventListener("click", function () {
                                       "relative";
 
                                     setTimeout(() => {
-                                      setTimeout(() => {
-                                        Toothpaste_Synthesis_content_two.style.display =
-                                          "block";
-
-                                        Toothpaste_Synthesis_content_two_page.src =
-                                          "./images/slinesTwelve/10.png";
-
-                                        var quit =
-                                          document.getElementById("quit");
-                                        setInterval(() => {
-                                          Toothpaste_Synthesis.style.display =
-                                            "none";
-                                          quit.style.display = "block";
-                                        }, 1000);
+                                      var quit =
+                                        document.getElementById("quit");
+                                      setInterval(() => {
+                                        Toothpaste_Synthesis.style.display =
+                                          "none";
+                                        quit.style.display = "block";
                                       }, 3000);
-                                    }, 1000);
+                                    }, 3000);
                                   }
                                   if (
                                     isCollide(
