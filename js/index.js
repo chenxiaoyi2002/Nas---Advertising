@@ -625,7 +625,7 @@ skips.addEventListener("click", function () {
                           console.log(
                             "Cake-block的数量为：" + numberOfCakeBlocks
                           );
-                          if (numberOfCakeBlocks <= 0) {
+                          if (numberOfCakeBlocks <= 2) {
                             // 成功吃掉三个蛋糕
                             Peony_garden.style.display = "none";
                             Peony_garden_fail.style.display = "block";
