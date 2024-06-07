@@ -844,10 +844,6 @@ Peony_garden_success_img.addEventListener("click", function () {
                           setTimeout(() => {
                             Toothpaste_Synthesis_content_two.style.display =
                               "none";
-
-                            Toothpaste_Synthesis_content_two_page.src =
-                              "./images/slinesTwelve/10.png";
-
                             setTimeout(() => {
                               Toothpaste.addEventListener(
                                 "touchstart",
@@ -884,30 +880,17 @@ Peony_garden_success_img.addEventListener("click", function () {
                                       Toothpaste_Synthesis_one
                                     )
                                   ) {
-                                    Toothpaste_Synthesis_content_two.style.display =
-                                      "block";
+                                    var quit = document.getElementById("quit");
+                                    Toothpaste_Synthesis.classList.add(
+                                      "page-transition"
+                                    );
 
-                                    Toothpaste_Synthesis_content_one_tips.src =
-                                      "./images/slinesTwelve/11.png";
-
-                                    health.src = "./images/slinesTwelve/9.png";
-
-                                    Toothpaste_Synthesis_content_three.style.display =
-                                      "none";
-                                    Toothpaste_Synthesis_content_two.style.zIndex =
-                                      "0";
-                                    Toothpaste_Synthesis_content_two.style.position =
-                                      "relative";
-
-                                    setTimeout(() => {
-                                      var quit =
-                                        document.getElementById("quit");
-                                      setInterval(() => {
-                                        Toothpaste_Synthesis.style.display =
-                                          "none";
-                                        quit.style.display = "block";
-                                      }, 3000);
-                                    }, 3000);
+                                    // 模拟页面切换
+                                    setTimeout(function () {
+                                      Toothpaste_Synthesis.style.display =
+                                        "none";
+                                      quit.style.display = "block";
+                                    }, 1000);
                                   }
                                   if (
                                     isCollide(
@@ -935,8 +918,8 @@ Peony_garden_success_img.addEventListener("click", function () {
                                 }
                               );
                             }, 4000);
-                          }, 500);
-                        }, 1500);
+                          }, 2500);
+                        }, 300);
                       }, 1500);
                     });
                   }
