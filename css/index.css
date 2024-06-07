@@ -180,7 +180,7 @@ body {
 }
 @font-face {
   font-family: "HuaWenKaiTi"; /* 你可以自定义这个字体家族名称 */
-  src: url("../images/slicesOne/方正粗金陵简体.ttf") format("woff2");
+  src: url("../word/方正粗金陵简体.ttf") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
