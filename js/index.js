@@ -79,7 +79,7 @@ draggableElement.addEventListener("touchend", () => {
     draggableElementMain.querySelector("img").src =
       "./images/slicesTwo/ship.png";
     draggableElementMain.style.transition = "left 2s, top 2s";
-    draggableElementMain.style.left = "60%";
+    draggableElementMain.style.left = "67%";
     setTimeout(() => {
       draggableElementMain.style.top = "-100%";
       draggableElementMain.style.left = "30%"; // 向右移动到 80%
