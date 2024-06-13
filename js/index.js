@@ -79,10 +79,10 @@ draggableElement.addEventListener("touchend", () => {
     draggableElementMain.querySelector("img").src =
       "./images/slicesTwo/ship.png";
     draggableElementMain.style.transition = "left 2s, top 2s";
-    draggableElementMain.style.left = "67%";
+    draggableElementMain.style.left = "60%";
     setTimeout(() => {
-      draggableElementMain.style.top = "-100%";
-      draggableElementMain.style.left = "30%"; // 向右移动到 80%
+      // draggableElementMain.style.top = "-100%";
+      // draggableElementMain.style.left = "30%"; // 向右移动到 80%
       draggableElementMain.style.animation = "shrinkAndFadeOut 5s forwards";
       draggableElementMain.style.animationTimingFunction = "ease-out";
       setTimeout(() => {
@@ -230,7 +230,7 @@ ship.addEventListener("click", function () {
         }
       });
     }, 800);
-  }, 800);
+  }, 1800);
 });
 // 修改，牙在冰的上下左右100px内才算碰上，可修改betweenNum
 
@@ -625,7 +625,7 @@ skips.addEventListener("click", function () {
                           console.log(
                             "Cake-block的数量为：" + numberOfCakeBlocks
                           );
-                          if (numberOfCakeBlocks <= 2) {
+                          if (numberOfCakeBlocks <= 0) {
                             // 成功吃掉三个蛋糕
                             Peony_garden.style.display = "none";
                             Peony_garden_fail.style.display = "block";
@@ -970,6 +970,137 @@ const Toothpaste_Synthesis_yellow_white = document.getElementById(
 );
 const Background_light = document.getElementById("Background_light");
 let ToothpasteX, ToothpasteY;
+// Skip.addEventListener("click", () => {
+//   Toothpaste_Synthesis.style.display = "block";
+//   Peony_garden_fail.style.display = "none";
+//   Peony_garden_success.style.display = "none";
+//   setTimeout(() => {
+//     Toothpaste_Synthesis_one.classList.add("scaleEffect");
+//     setTimeout(() => {
+//       Toothpaste_Synthesis_content_one_tips.style.display = "block";
+//       setTimeout(() => {
+//         Toothpaste_Synthesis_content_one_tips.src =
+//           "./images/slinesTwelve/3.png";
+//         setTimeout(() => {
+//           Toothpaste_Synthesis_content_two_page.style.display = "block";
+//           setTimeout(() => {
+//             Toothpaste_Synthesis_content_two_page.src =
+//               "./images/slinesTwelve/5.png";
+//             Toothpaste_Synthesis_content_two_page.addEventListener(
+//               "click",
+//               () => {
+//                 Toothpaste_Synthesis_content_two.style.display = "none";
+//                 Toothpaste_Synthesis_content_three.style.display = "block";
+//                 Composite_button.addEventListener("click", () => {
+//                   Toothpaste_Synthesis_content_three_page_Around_page_img.classList.add(
+//                     "Toothpaste_Synthesis_content_three_page_Around_page_img"
+//                   );
+//                   Toothpaste.style.zIndex = "2";
+
+//                   setTimeout(() => {
+//                     Background_light.style.display = "block";
+//                     Toothpaste_Synthesis_yellow_white.src =
+//                       "./images/slinesTwelve/7.1.png";
+//                     Toothpaste_middle.src = "./images/slinesTwelve/7.3.png";
+//                     Toothpaste.style.width = "35%";
+//                     Toothpaste.style.height = "75%";
+//                     Composite_button.style.display = "none";
+//                     Toothpaste_Synthesis_content_two.style.zIndex = "9";
+//                     Toothpaste_Synthesis_content_two.style.position =
+//                       "absolute";
+//                     setTimeout(() => {
+//                       Toothpaste_Synthesis_content_two.style.display = "block";
+//                       Toothpaste_Synthesis_content_two_page.src =
+//                         "./images/slinesTwelve/8.2.png";
+//                       setTimeout(() => {
+//                         Toothpaste_Synthesis_content_two.style.display = "none";
+//                         Toothpaste_Synthesis_content_two.style.zIndex = "0";
+//                         Toothpaste_Synthesis_content_two.style.position =
+//                           "relative";
+//                         Toothpaste.addEventListener(
+//                           "touchstart",
+//                           function (event) {
+//                             // 记录触摸开始时的初始位置
+//                             ToothpasteX =
+//                               event.touches[0].clientX - Toothpaste.offsetLeft;
+//                             ToothpasteY =
+//                               event.touches[0].clientY - Toothpaste.offsetTop;
+//                           }
+//                         );
+//                         Toothpaste.addEventListener(
+//                           "touchmove",
+//                           function (event) {
+//                             // 阻止默认滚动行为
+//                             event.preventDefault();
+
+//                             // 计算船应该移动到的位置
+//                             const x = event.touches[0].clientX - ToothpasteX;
+//                             const y = event.touches[0].clientY - ToothpasteY;
+
+//                             // 更新船的位置
+//                             Toothpaste.style.left = x + "px";
+//                             Toothpaste.style.top = y + "px";
+
+//                             // 检测是否碰到了障碍物
+//                             if (
+//                               isCollide(Toothpaste, Toothpaste_Synthesis_one)
+//                             ) {
+//                               health.src = "./images/slinesTwelve/9.png";
+//                               Toothpaste_Synthesis_content_one_tips.src =
+//                                 "./images/slinesTwelve/11.png";
+//                               Toothpaste_Synthesis_content_three.style.display =
+//                                 "none";
+//                               setTimeout(() => {
+//                                 Toothpaste_Synthesis_content_two.style.display =
+//                                   "block";
+//                                 Toothpaste_Synthesis_content_two_page.style.pointerEvents =
+//                                   "none";
+//                                 setTimeout(() => {
+//                                   Toothpaste_Synthesis_content_two_page.src =
+//                                     "./images/slinesTwelve/10.png";
+//                                   var quit = document.getElementById("quit");
+//                                   setInterval(() => {
+//                                     Toothpaste_Synthesis.style.display = "none";
+//                                     quit.style.display = "block";
+//                                   });
+//                                 }, 2000);
+//                               }, 1000);
+//                             }
+//                             if (
+//                               isCollide(
+//                                 Toothpaste,
+//                                 Toothpaste_Synthesis_yellow_white
+//                               )
+//                             ) {
+//                               Toothpaste_Synthesis_yellow_white.style.display =
+//                                 "none";
+//                               Background_light.style.display = "none";
+//                             }
+//                             function isCollide(element1, element2) {
+//                               const rect1 = element1.getBoundingClientRect();
+//                               const rect2 = element2.getBoundingClientRect();
+
+//                               return !(
+//                                 rect1.right < rect2.left ||
+//                                 rect1.left > rect2.right ||
+//                                 rect1.bottom < rect2.top ||
+//                                 rect1.top > rect2.bottom
+//                               );
+//                             }
+//                           }
+//                         );
+//                       }, 4000);
+//                     }, 3000);
+//                   }, 2000);
+//                 });
+//               }
+//             );
+//           }, 2000);
+//         }, 2000);
+//       }, 1800);
+//     }, 3500);
+//   }, 1000);
+// });
 var quit_page_content_three = document.getElementById(
   "quit_page_content_three"
 );
