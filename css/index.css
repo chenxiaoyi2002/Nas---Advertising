@@ -1247,7 +1247,7 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
   display: none;
 }
 .move-right {
-  animation: moveRight 3s forwards;
+  animation: moveRight 2.3s forwards;
 }
 @keyframes moveRight {
   0% {

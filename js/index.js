@@ -918,8 +918,8 @@ Peony_garden_success_img.addEventListener("click", function () {
                                 }
                               );
                             }, 4000);
-                          }, 2500);
-                        }, 300);
+                          }, 1800);
+                        }, 1800);
                       }, 1500);
                     });
                   }
