@@ -31,6 +31,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
 }
 .music_img {
   width: 90%;
@@ -1246,25 +1247,20 @@ img[src="./images/slicesFour/LuckyBag.png"].shake {
   display: none;
 }
 .move-right {
-  animation: moveRight 1s forwards, moveDown 1s 1s forwards;
+  animation: moveRight 3s forwards;
 }
 @keyframes moveRight {
   0% {
-    transform: translateX(0);
+    transform: translate(0, 0);
   }
-  100% {
-    transform: translateX(20%);
-  }
-}
-
-@keyframes moveDown {
-  0% {
+  50% {
     transform: translate(20%, 0);
   }
   100% {
     transform: translate(20%, 85%);
   }
 }
+
 .Peony_garden_content_two_page_img_tooth {
   left: 0;
   top: 0;
